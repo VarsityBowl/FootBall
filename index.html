@@ -2,585 +2,698 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Varsity Bowl — Watch Live High School Football Championship</title>
-<meta name="description" content="Watch the Varsity Bowl National High School Football Championship 2026 Live Stream in HD." />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>🔴 LIVE — Varsity Bowl Championship Stream HD</title>
+<meta name="description" content="Watch the Varsity Bowl National High School Football Championship Live Stream in HD. Free HD stream available now." />
 <style>
   :root{
     --navy:#0a1f44;
     --navy-2:#0d2a5c;
-    --field:#1a7a3f;
     --crimson:#c8102e;
     --crimson-2:#a00d24;
     --gold:#f5c518;
-    --gold-2:#e0a800;
     --dark:#0a0a0a;
     --dark-2:#141414;
     --white:#ffffff;
     --gray:#b8b8b8;
+    --live:#ff0033;
   }
-  *{margin:0;padding:0;box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{overflow-x:hidden;}
   body{
     font-family:'Helvetica Neue',Arial,sans-serif;
     background:var(--dark);
     color:var(--white);
-    line-height:1.6;
-    overflow-x:hidden;
+    line-height:1.5;
+    min-height:100vh;
   }
   a{color:inherit;text-decoration:none;}
-  .container{max-width:1200px;margin:0 auto;padding:0 20px;}
+  .container{max-width:1100px;margin:0 auto;padding:0 16px;}
 
-  /* NAV */
-  nav{
-    position:sticky;top:0;z-index:100;
-    background:rgba(10,31,68,0.97);
-    backdrop-filter:blur(10px);
-    border-bottom:2px solid var(--gold);
-    padding:14px 0;
+  /* TOP BAR */
+  .topbar{
+    background:#000;
+    padding:10px 16px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:2px solid var(--crimson);
+    position:sticky;top:0;z-index:50;
   }
-  .nav-inner{display:flex;justify-content:space-between;align-items:center;}
-  .logo{
-    font-weight:900;font-size:1.4rem;letter-spacing:1px;
+  .topbar .brand{
+    font-weight:900;
+    font-size:.95rem;
+    letter-spacing:1px;
     color:var(--gold);
     text-transform:uppercase;
-    display:flex;align-items:center;gap:10px;
+    display:flex;align-items:center;gap:8px;
   }
-  .logo .trophy{font-size:1.3rem;}
-  .logo span{color:var(--white);}
-  .nav-links{display:flex;gap:28px;list-style:none;}
-  .nav-links a{
-    font-weight:700;font-size:.9rem;letter-spacing:1px;
-    text-transform:uppercase;color:var(--white);
-    transition:color .2s;
+  .topbar .live-pill{
+    display:inline-flex;align-items:center;gap:6px;
+    background:var(--live);
+    color:#fff;
+    font-size:.7rem;
+    font-weight:900;
+    padding:5px 10px;
+    border-radius:20px;
+    letter-spacing:1px;
+    animation:liveBlink 1.5s infinite;
   }
-  .nav-links a:hover{color:var(--gold);}
-  .menu-toggle{display:none;background:none;border:none;color:var(--gold);font-size:1.6rem;cursor:pointer;}
+  .live-dot{
+    width:7px;height:7px;background:#fff;border-radius:50%;
+  }
+  @keyframes liveBlink{
+    0%,100%{opacity:1;}
+    50%{opacity:.5;}
+  }
 
-  /* HERO */
-  header.hero{
-    position:relative;
-    min-height:92vh;
-    display:flex;align-items:center;justify-content:center;
+  /* MATCH HEADER */
+  .match-header{
+    background:linear-gradient(135deg,var(--navy),var(--navy-2));
+    padding:20px 16px 24px;
     text-align:center;
-    padding:80px 20px;
-    background:
-      linear-gradient(rgba(10,31,68,0.85),rgba(10,10,10,0.9)),
-      repeating-linear-gradient(90deg,
-        var(--field) 0 60px,
-        #0f5128 60px 62px);
-    overflow:hidden;
+    border-bottom:1px solid #1a1a1a;
   }
-  header.hero::before{
-    content:"";position:absolute;inset:0;
-    background:radial-gradient(circle at 50% 40%,rgba(200,16,46,0.15) 0%,transparent 60%);
-    pointer-events:none;
+  .match-header .league{
+    font-size:.75rem;
+    letter-spacing:3px;
+    color:var(--gold);
+    font-weight:900;
+    text-transform:uppercase;
+    margin-bottom:12px;
   }
-  .hero-content{position:relative;z-index:2;max-width:900px;}
-  .badge{
-    display:inline-block;
-    background:var(--crimson);color:var(--white);
-    font-weight:900;font-size:.8rem;letter-spacing:3px;
-    padding:8px 18px;border-radius:4px;
-    text-transform:uppercase;margin-bottom:24px;
-    border:1px solid var(--gold);
+  .matchup{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:16px;
+    margin-bottom:12px;
+    flex-wrap:wrap;
   }
-  .trophy-icon{
-    font-size:3rem;margin-bottom:10px;
-    filter:drop-shadow(0 4px 20px rgba(245,197,24,0.4));
-  }
-  .hero h1{
-    font-size:clamp(2.4rem,7vw,5rem);
-    font-weight:900;line-height:1;
-    text-transform:uppercase;letter-spacing:-1px;
-    margin-bottom:20px;
-    text-shadow:0 4px 30px rgba(0,0,0,0.8);
-  }
-  .hero h1 .gold{color:var(--gold);}
-  .hero h1 .crimson{color:var(--crimson);}
-  .hero p.sub{
-    font-size:clamp(1rem,2vw,1.25rem);
-    color:var(--gray);margin-bottom:32px;
-    font-weight:500;
+  .team-name{
+    font-size:clamp(1rem,4vw,1.4rem);
+    font-weight:900;
+    text-transform:uppercase;
     letter-spacing:1px;
   }
-  .hero-info{
-    display:flex;gap:32px;justify-content:center;flex-wrap:wrap;
-    margin-bottom:36px;
+  .vs{
+    color:var(--crimson);
+    font-weight:900;
+    font-size:1.1rem;
+    padding:4px 10px;
+    background:rgba(200,16,46,.15);
+    border:1px solid var(--crimson);
+    border-radius:6px;
   }
-  .hero-info div{text-align:center;}
-  .hero-info .label{font-size:.75rem;letter-spacing:2px;color:var(--gold);text-transform:uppercase;font-weight:700;}
-  .hero-info .value{font-size:1.1rem;font-weight:700;}
-  .btn{
-    display:inline-block;
-    background:var(--gold);color:var(--navy);
-    padding:16px 38px;border-radius:6px;
-    font-weight:900;text-transform:uppercase;letter-spacing:2px;
-    font-size:.95rem;
-    transition:all .2s;
-    border:2px solid var(--gold);
+  .match-meta{
+    font-size:.8rem;
+    color:var(--gray);
+    display:flex;
+    justify-content:center;
+    gap:16px;
+    flex-wrap:wrap;
+  }
+  .match-meta span{display:inline-flex;align-items:center;gap:5px;}
+
+  /* VIDEO PLAYER */
+  .player-wrap{
+    padding:20px 16px 0;
+    max-width:900px;
+    margin:0 auto;
+  }
+  .video-player{
+    position:relative;
+    width:100%;
+    background:#000;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 20px 60px rgba(0,0,0,.7), 0 0 0 1px rgba(245,197,24,.2);
+    aspect-ratio:16/9;
+    cursor:pointer;
+    user-select:none;
+  }
+  .video-player .poster{
+    position:absolute;
+    inset:0;
+    background:
+      linear-gradient(rgba(0,0,0,.3),rgba(0,0,0,.75)),
+      radial-gradient(circle at 50% 40%, #1a7a3f 0%, #0a1f44 80%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+  }
+  .video-player .poster::before{
+    content:"";
+    position:absolute;inset:0;
+    background:repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,.02) 0 20px,
+      transparent 20px 40px
+    );
+  }
+  .poster-text{
+    position:relative;
+    z-index:2;
+    text-align:center;
+    padding:16px;
+  }
+  .poster-text .champ{
+    font-size:clamp(1.2rem,4vw,1.8rem);
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:6px;
+    text-shadow:0 2px 20px rgba(0,0,0,.8);
+  }
+  .poster-text .sub{
+    font-size:.8rem;
+    color:var(--gold);
+    letter-spacing:2px;
+    text-transform:uppercase;
+    font-weight:700;
+  }
+
+  /* BIG PLAY BUTTON */
+  .play-btn{
+    position:absolute;
+    z-index:5;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    width:90px;height:90px;
+    background:rgba(200,16,46,.95);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 8px 30px rgba(200,16,46,.6), 0 0 0 0 rgba(200,16,46,.7);
+    transition:transform .2s;
+    animation:playPulse 2s infinite;
+    border:4px solid #fff;
     cursor:pointer;
   }
-  .btn:hover{background:transparent;color:var(--gold);transform:translateY(-2px);}
-  .btn-crimson{background:var(--crimson);color:var(--white);border-color:var(--crimson);}
-  .btn-crimson:hover{background:transparent;color:var(--crimson);}
-  
-  /* PULSE ANIMATION FOR CPA BUTTON */
-  .pulse-btn {
-    animation: pulse 2s infinite;
-    box-shadow: 0 0 0 0 rgba(200, 16, 46, 0.7);
+  .play-btn svg{
+    width:36px;height:36px;
+    margin-left:6px;
+    fill:#fff;
   }
-  @keyframes pulse {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(200, 16, 46, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(200, 16, 46, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(200, 16, 46, 0); }
+  .play-btn:hover{transform:translate(-50%,-50%) scale(1.08);}
+  @keyframes playPulse{
+    0%{box-shadow:0 8px 30px rgba(200,16,46,.6), 0 0 0 0 rgba(200,16,46,.7);}
+    70%{box-shadow:0 8px 30px rgba(200,16,46,.6), 0 0 0 25px rgba(200,16,46,0);}
+    100%{box-shadow:0 8px 30px rgba(200,16,46,.6), 0 0 0 0 rgba(200,16,46,0);}
   }
 
-  /* SECTION */
-  section{padding:90px 0;}
-  .section-title{
-    font-size:clamp(1.8rem,4vw,2.8rem);
-    font-weight:900;text-transform:uppercase;
-    letter-spacing:-0.5px;margin-bottom:12px;
+  /* FAKE PLAYER CONTROLS */
+  .player-controls{
+    position:absolute;
+    bottom:0;left:0;right:0;
+    background:linear-gradient(transparent,rgba(0,0,0,.95));
+    padding:12px 14px 10px;
+    z-index:6;
+    pointer-events:none;
   }
-  .section-title .gold{color:var(--gold);}
-  .section-title .crimson{color:var(--crimson);}
-  .section-sub{
-    color:var(--gray);margin-bottom:48px;
-    font-size:1.05rem;max-width:700px;
-  }
-  .section-head{text-align:center;margin-bottom:50px;}
-  .section-head .section-sub{margin-left:auto;margin-right:auto;}
-
-  /* COUNTDOWN */
-  .countdown-wrap{
-    background:linear-gradient(135deg,var(--navy),var(--navy-2));
-    padding:60px 20px;text-align:center;
-    border-top:3px solid var(--gold);
-    border-bottom:3px solid var(--crimson);
-  }
-  .countdown-wrap h3{
-    font-size:1rem;letter-spacing:4px;text-transform:uppercase;
-    color:var(--gold);margin-bottom:24px;
-  }
-  .countdown{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
-  .cd-box{
-    background:rgba(0,0,0,0.5);
-    border:2px solid var(--gold);
-    border-radius:8px;padding:18px 24px;min-width:100px;
+  .progress-bar{
+    width:100%;height:5px;
+    background:rgba(255,255,255,.25);
+    border-radius:3px;
+    overflow:hidden;
+    margin-bottom:10px;
     position:relative;
   }
-  .cd-box::after{
-    content:"";position:absolute;top:0;left:0;right:0;height:3px;
-    background:linear-gradient(90deg,var(--crimson),var(--gold),var(--crimson));
+  .progress-fill{
+    width:15%;
+    height:100%;
+    background:var(--crimson);
+    border-radius:3px;
+    position:relative;
   }
-  .cd-num{font-size:2.4rem;font-weight:900;color:var(--gold);line-height:1;}
-  .cd-label{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-top:6px;}
-
-  /* SCHEDULE */
-  .schedule-table{
-    width:100%;border-collapse:collapse;
-    background:var(--dark-2);border-radius:10px;overflow:hidden;
-    box-shadow:0 10px 40px rgba(0,0,0,0.5);
+  .progress-fill::after{
+    content:"";
+    position:absolute;right:-6px;top:50%;
+    transform:translateY(-50%);
+    width:12px;height:12px;
+    background:var(--crimson);
+    border-radius:50%;
+    border:2px solid #fff;
   }
-  .schedule-table th{
-    background:var(--gold);color:var(--navy);
-    padding:16px;text-align:left;
-    font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;
-    font-weight:900;
+  .controls-row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    color:#fff;
+    font-size:.8rem;
   }
-  .schedule-table td{
-    padding:16px;border-bottom:1px solid #222;
-    font-size:.95rem;
+  .controls-left{
+    display:flex;
+    align-items:center;
+    gap:14px;
   }
-  .schedule-table tr:hover td{background:rgba(245,197,24,0.05);}
-  .round-tag{
-    display:inline-block;background:var(--navy);color:var(--gold);
-    font-size:.7rem;font-weight:900;letter-spacing:1px;
-    padding:3px 10px;border-radius:3px;text-transform:uppercase;
-  }
-  .round-tag.final{background:var(--crimson);color:var(--white);}
-  .watch-link {
-    color: var(--crimson);
-    font-weight: 900;
-    text-transform: uppercase;
-    font-size: 0.8rem;
-    border: 1px solid var(--crimson);
-    padding: 5px 10px;
-    border-radius: 4px;
-    transition: all 0.2s;
-  }
-  .watch-link:hover {
-    background: var(--crimson);
-    color: var(--white);
+  .ctrl-icon{
+    width:18px;height:18px;
+    fill:#fff;
+    opacity:.85;
   }
 
-  /* TEAMS */
-  .teams-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:20px;
+  /* VIEWER COUNT */
+  .viewer-bar{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    padding:14px 0;
+    font-size:.85rem;
+    color:var(--gray);
   }
-  .team-card{
+  .viewer-bar .live-dot{
+    width:8px;height:8px;
+    background:var(--live);
+    border-radius:50%;
+    animation:liveBlink 1.2s infinite;
+  }
+  .viewer-bar b{color:#fff;}
+
+  /* CHAT WIDGET (Fake) */
+  .chat-box{
+    max-width:900px;
+    margin:0 auto;
+    padding:0 16px 20px;
+  }
+  .chat-inner{
     background:var(--dark-2);
-    border:2px solid #222;border-radius:10px;
-    padding:28px 20px;text-align:center;
-    transition:all .25s;
-    position:relative;
+    border:1px solid #222;
+    border-radius:10px;
+    padding:16px;
+    max-height:220px;
     overflow:hidden;
   }
-  .team-card::before{
-    content:"";position:absolute;top:0;left:0;right:0;height:3px;
-    background:var(--crimson);
-    transform:scaleX(0);transform-origin:left;
-    transition:transform .3s;
+  .chat-inner h4{
+    font-size:.75rem;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:12px;
+    border-bottom:1px solid #222;
+    padding-bottom:8px;
   }
-  .team-card:hover::before{transform:scaleX(1);}
-  .team-card:hover{
-    border-color:var(--gold);transform:translateY(-5px);
-    box-shadow:0 15px 40px rgba(245,197,24,0.15);
+  .chat-msg{
+    font-size:.82rem;
+    margin-bottom:10px;
+    line-height:1.4;
+    color:#ddd;
   }
-  .team-logo{
-    width:64px;height:64px;border-radius:50%;
-    background:linear-gradient(135deg,var(--navy),var(--crimson));
-    display:flex;align-items:center;justify-content:center;
-    font-weight:900;font-size:1.6rem;color:var(--gold);
-    margin:0 auto 16px;
-    border:2px solid var(--gold);
-  }
-  .team-card h4{font-size:1.1rem;font-weight:800;text-transform:uppercase;margin-bottom:4px;}
-  .team-card .school{font-size:.85rem;color:var(--gray);}
-  .team-card .record{
-    margin-top:12px;font-size:.8rem;letter-spacing:1px;
-    color:var(--gold);font-weight:700;text-transform:uppercase;
-  }
-  .team-btn {
-    display: block;
-    margin-top: 15px;
-    padding: 10px;
-    background: var(--navy);
-    color: var(--white);
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    border-radius: 4px;
-    transition: background 0.2s;
-  }
-  .team-btn:hover {
-    background: var(--crimson);
+  .chat-msg b{color:var(--gold);}
+  .chat-msg .time{
+    color:#555;
+    font-size:.7rem;
+    margin-left:6px;
   }
 
-  /* UNLOCK SECTION (Formerly Register) */
-  .unlock-section{
-    background:linear-gradient(135deg,var(--navy),var(--crimson-2));
-    text-align:center;border-top:3px solid var(--gold);
-    border-bottom:3px solid var(--gold);
+  /* CTA SECTION */
+  .cta-section{
+    max-width:900px;
+    margin:0 auto;
+    padding:0 16px 30px;
+    text-align:center;
   }
-  .unlock-section .section-title,
-  .unlock-section .section-sub{color:var(--white);}
-  .unlock-section .section-sub{color:#e0e8f0;margin-left:auto;margin-right:auto;}
-  .info-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:24px;margin:48px 0;text-align:left;
+  .cta-section h3{
+    font-size:clamp(1.1rem,3.5vw,1.4rem);
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:.5px;
+    margin-bottom:8px;
   }
-  .info-box{
-    background:rgba(0,0,0,0.35);
-    border-left:4px solid var(--gold);
-    padding:20px;border-radius:6px;
+  .cta-section h3 span{color:var(--crimson);}
+  .cta-section p{
+    color:var(--gray);
+    font-size:.9rem;
+    margin-bottom:20px;
   }
-  .info-box h4{
-    color:var(--gold);text-transform:uppercase;
-    letter-spacing:1.5px;font-size:.85rem;margin-bottom:8px;
+  .cta-btn{
+    display:block;
+    width:100%;
+    max-width:420px;
+    margin:0 auto;
+    background:linear-gradient(135deg,var(--crimson),var(--crimson-2));
+    color:#fff;
+    padding:18px 24px;
+    border-radius:10px;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:2px;
+    font-size:1rem;
+    border:2px solid var(--crimson);
+    box-shadow:0 10px 30px rgba(200,16,46,.4);
+    transition:all .2s;
+    cursor:pointer;
+    animation:ctaPulse 2s infinite;
   }
-  .info-box p{color:#e8f0ea;font-size:.95rem;}
+  .cta-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 14px 40px rgba(200,16,46,.6);
+  }
+  @keyframes ctaPulse{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.02);}
+  }
+  .cta-sub{
+    font-size:.7rem;
+    color:#666;
+    margin-top:12px;
+    letter-spacing:.5px;
+  }
+
+  /* HOW IT WORKS */
+  .how{
+    max-width:900px;
+    margin:0 auto;
+    padding:24px 16px 40px;
+  }
+  .how h4{
+    text-align:center;
+    font-size:.85rem;
+    letter-spacing:3px;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:20px;
+  }
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+  }
+  .step{
+    background:var(--dark-2);
+    border:1px solid #222;
+    border-radius:10px;
+    padding:16px 10px;
+    text-align:center;
+  }
+  .step .num{
+    width:30px;height:30px;
+    background:var(--crimson);
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 10px;
+    font-weight:900;
+    font-size:.9rem;
+  }
+  .step p{
+    font-size:.78rem;
+    color:#ccc;
+    line-height:1.4;
+  }
+
+  /* MODAL */
+  .modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.9);
+    backdrop-filter:blur(6px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    z-index:999;
+    padding:20px;
+  }
+  .modal-overlay.active{display:flex;}
+  .modal{
+    background:linear-gradient(135deg,var(--navy),var(--dark-2));
+    border:2px solid var(--gold);
+    border-radius:14px;
+    padding:32px 24px;
+    max-width:420px;
+    width:100%;
+    text-align:center;
+    box-shadow:0 30px 80px rgba(0,0,0,.8);
+    animation:modalIn .3s ease-out;
+  }
+  @keyframes modalIn{
+    from{opacity:0;transform:scale(.9) translateY(20px);}
+    to{opacity:1;transform:scale(1) translateY(0);}
+  }
+  .modal .loading-icon{
+    width:60px;height:60px;
+    margin:0 auto 18px;
+    border:4px solid rgba(245,197,24,.2);
+    border-top-color:var(--gold);
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+  }
+  @keyframes spin{
+    to{transform:rotate(360deg);}
+  }
+  .modal h3{
+    font-size:1.15rem;
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    color:#fff;
+    margin-bottom:10px;
+  }
+  .modal p{
+    font-size:.88rem;
+    color:var(--gray);
+    margin-bottom:20px;
+    line-height:1.5;
+  }
+  .modal .cta-btn{
+    font-size:.9rem;
+    padding:16px 20px;
+    max-width:100%;
+  }
+  .modal .small{
+    font-size:.7rem;
+    color:#666;
+    margin-top:14px;
+    margin-bottom:0;
+  }
 
   /* FOOTER */
   footer{
-    background:#050505;padding:40px 20px;text-align:center;
-    border-top:2px solid var(--gold);
+    background:#050505;
+    padding:24px 16px;
+    text-align:center;
+    border-top:1px solid #1a1a1a;
+    font-size:.72rem;
+    color:#555;
+    line-height:1.6;
   }
-  footer p{color:var(--gray);font-size:.85rem;}
-  footer .foot-logo{
-    font-weight:900;font-size:1.2rem;letter-spacing:2px;
-    color:var(--gold);text-transform:uppercase;margin-bottom:10px;
-  }
-  footer .foot-tag{
-    color:var(--crimson);font-weight:700;font-size:.8rem;
-    letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;
-  }
-  .disclaimer {
-    font-size: 0.7rem;
-    color: #666;
-    margin-top: 20px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+  footer a{color:#777;}
 
   /* MOBILE */
-  @media(max-width:768px){
-    .menu-toggle{display:block;}
-    .nav-links{
-      display:none;position:absolute;top:100%;left:0;right:0;
-      background:rgba(10,31,68,0.98);flex-direction:column;
-      padding:20px;gap:16px;border-bottom:2px solid var(--gold);
-    }
-    .nav-links.open{display:flex;}
-    .hero-info{gap:20px;}
-    .cd-box{min-width:80px;padding:14px 16px;}
-    .cd-num{font-size:1.8rem;}
-    .schedule-table th,.schedule-table td{padding:12px 10px;font-size:.85rem;}
-    .schedule-table th:nth-child(3), .schedule-table td:nth-child(3) { display: none; } /* Sembunyikan kolom matchup di HP jika terlalu lebar */
-    section{padding:60px 0;}
+  @media(max-width:600px){
+    .play-btn{width:72px;height:72px;border-width:3px;}
+    .play-btn svg{width:28px;height:28px;}
+    .poster-text .champ{font-size:1.1rem;}
+    .poster-text .sub{font-size:.7rem;}
+    .matchup{gap:10px;}
+    .steps{grid-template-columns:1fr;}
+    .step{display:flex;align-items:center;gap:12px;text-align:left;padding:14px;}
+    .step .num{margin:0;flex-shrink:0;}
+    .controls-row{font-size:.72rem;}
+    .ctrl-icon{width:15px;height:15px;}
+    .cta-btn{font-size:.9rem;padding:16px 18px;}
   }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="container nav-inner">
-    <div class="logo"><span class="trophy">🏆</span>Varsity <span>Bowl</span></div>
-    <button class="menu-toggle" id="menuToggle">☰</button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#schedule">Schedule</a></li>
-      <li><a href="#teams">Teams</a></li>
-      <li><a href="#watch">Watch Live</a></li>
-    </ul>
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="brand">🏆 VARSITY BOWL</div>
+  <div class="live-pill"><span class="live-dot"></span>LIVE</div>
+</div>
+
+<!-- MATCH HEADER -->
+<div class="match-header">
+  <div class="league">National Championship · Final</div>
+  <div class="matchup">
+    <div class="team-name">Northside Eagles</div>
+    <div class="vs">VS</div>
+    <div class="team-name">Central Titans</div>
   </div>
-</nav>
-
-<!-- HERO -->
-<header class="hero">
-  <div class="hero-content">
-    <div class="trophy-icon">🏆</div>
-    <div class="badge">2026 Season</div>
-    <h1>Varsity <span class="gold">Bowl</span><br/>National High School Football Championship</h1>
-    <p class="sub">Watch Live in HD. Complete 1 Step to Unlock Stream.</p>
-
-    <div class="hero-info">
-      <div>
-        <div class="label">Date</div>
-        <div class="value">Oct 10–15, 2026</div>
-      </div>
-      <div>
-        <div class="label">Location</div>
-        <div class="value">Memorial Stadium</div>
-      </div>
-      <div>
-        <div class="label">Stream</div>
-        <div class="value">1080p HD</div>
-      </div>
-    </div>
-
-    <!-- GANTI LINK INI DENGAN LINK VIDEO LOCKER CPA GRIP ANDA -->
-    <a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="btn btn-crimson pulse-btn">🔴 WATCH LIVE NOW</a>
-  </div>
-</header>
-
-<!-- COUNTDOWN -->
-<div class="countdown-wrap">
-  <h3>Kickoff In</h3>
-  <div class="countdown" id="countdown">
-    <div class="cd-box"><div class="cd-num" id="days">00</div><div class="cd-label">Days</div></div>
-    <div class="cd-box"><div class="cd-num" id="hours">00</div><div class="cd-label">Hours</div></div>
-    <div class="cd-box"><div class="cd-num" id="minutes">00</div><div class="cd-label">Minutes</div></div>
-    <div class="cd-box"><div class="cd-num" id="seconds">00</div><div class="cd-label">Seconds</div></div>
+  <div class="match-meta">
+    <span>📍 Memorial Stadium</span>
+    <span>🕐 8:00 PM EST</span>
+    <span>🏈 4th Quarter</span>
   </div>
 </div>
 
-<!-- SCHEDULE -->
-<section id="schedule">
-  <div class="container">
-    <div class="section-head">
-      <h2 class="section-title">Live Stream <span class="gold">Schedule</span></h2>
-      <p class="section-sub">Full tournament bracket. Click watch to access the stream (verification required).</p>
+<!-- VIDEO PLAYER -->
+<div class="player-wrap">
+  <div class="video-player" id="videoPlayer">
+    <div class="poster">
+      <div class="poster-text">
+        <div class="champ">Varsity Bowl 2026</div>
+        <div class="sub">Championship Stream · 1080p HD</div>
+      </div>
     </div>
 
-    <table class="schedule-table">
-      <thead>
-        <tr>
-          <th>Date</th>
-          <th>Time</th>
-          <th>Matchup</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Oct 10, 2026</td>
-          <td>7:00 PM</td>
-          <td>Northside Eagles vs. Central Titans</td>
-          <!-- GANTI LINK INI DENGAN LINK VIDEO LOCKER CPA GRIP ANDA -->
-          <td><a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="watch-link">Watch</a></td>
-        </tr>
-        <tr>
-          <td>Oct 10, 2026</td>
-          <td>9:30 PM</td>
-          <td>Westlake Wolves vs. East Ridge Bears</td>
-          <!-- GANTI LINK INI DENGAN LINK VIDEO LOCKER CPA GRIP ANDA -->
-          <td><a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="watch-link">Watch</a></td>
-        </tr>
-        <tr>
-          <td>Oct 11, 2026</td>
-          <td>7:00 PM</td>
-          <td>Southside Storm vs. Riverside Raiders</td>
-          <!-- GANTI LINK INI DENGAN LINK VIDEO LOCKER CPA GRIP ANDA -->
-          <td><a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="watch-link">Watch</a></td>
-        </tr>
-        <tr>
-          <td>Oct 12, 2026</td>
-          <td>8:00 PM</td>
-          <td>Winner QF1 vs. Winner QF2</td>
-          <!-- GANTI LINK INI DENGAN LINK VIDEO LOCKER CPA GRIP ANDA -->
-          <td><a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="watch-link">Watch</a></td>
-        </tr>
-        <tr>
-          <td>Oct 15, 2026</td>
-          <td>8:00 PM</td>
-          <td>TBD vs. TBD (Championship)</td>
-          <!-- GANTI LINK INI DENGAN LINK VIDEO LOCKER CPA GRIP ANDA -->
-          <td><a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="watch-link">Watch</a></td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- TEAMS -->
-<section id="teams" style="background:var(--dark-2);">
-  <div class="container">
-    <div class="section-head">
-      <h2 class="section-title">Varsity <span class="gold">Teams</span></h2>
-      <p class="section-sub">16 of the nation's top high school football programs compete for the Varsity Bowl crown.</p>
+    <!-- PLAY BUTTON -->
+    <div class="play-btn" id="playBtn">
+      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
     </div>
 
-    <div class="teams-grid">
-      <div class="team-card">
-        <div class="team-logo">NE</div>
-        <h4>Northside Eagles</h4>
-        <p class="school">Northside High School</p>
-        <p class="record">8–1 · Conference Champs</p>
-        <!-- GANTI LINK INI DENGAN LINK VIDEO LOCKER CPA GRIP ANDA -->
-        <a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="team-btn">Watch Highlights</a>
+    <!-- FAKE CONTROLS -->
+    <div class="player-controls">
+      <div class="progress-bar">
+        <div class="progress-fill"></div>
       </div>
-      <div class="team-card">
-        <div class="team-logo">CT</div>
-        <h4>Central Titans</h4>
-        <p class="school">Central High School</p>
-        <p class="record">7–2 · Wild Card</p>
-        <a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="team-btn">Watch Highlights</a>
-      </div>
-      <div class="team-card">
-        <div class="team-logo">WW</div>
-        <h4>Westlake Wolves</h4>
-        <p class="school">Westlake High School</p>
-        <p class="record">9–0 · Undefeated</p>
-        <a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="team-btn">Watch Highlights</a>
-      </div>
-      <div class="team-card">
-        <div class="team-logo">ER</div>
-        <h4>East Ridge Bears</h4>
-        <p class="school">East Ridge High School</p>
-        <p class="record">6–3 · Wild Card</p>
-        <a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="team-btn">Watch Highlights</a>
-      </div>
-      <div class="team-card">
-        <div class="team-logo">SS</div>
-        <h4>Southside Storm</h4>
-        <p class="school">Southside High School</p>
-        <p class="record">8–1 · Division Champs</p>
-        <a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="team-btn">Watch Highlights</a>
-      </div>
-      <div class="team-card">
-        <div class="team-logo">RR</div>
-        <h4>Riverside Raiders</h4>
-        <p class="school">Riverside High School</p>
-        <p class="record">7–2 · Wild Card</p>
-        <a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="team-btn">Watch Highlights</a>
-      </div>
-      <div class="team-card">
-        <div class="team-logo">NH</div>
-        <h4>North Hills Hawks</h4>
-        <p class="school">North Hills High School</p>
-        <p class="record">6–3 · Wild Card</p>
-        <a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="team-btn">Watch Highlights</a>
-      </div>
-      <div class="team-card">
-        <div class="team-logo">SP</div>
-        <h4>Summit Prep Panthers</h4>
-        <p class="school">Summit Prep Academy</p>
-        <p class="record">9–0 · Undefeated</p>
-        <a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="team-btn">Watch Highlights</a>
+      <div class="controls-row">
+        <div class="controls-left">
+          <svg class="ctrl-icon" viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
+          <svg class="ctrl-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+          <span id="timeDisplay">42:18 / 48:00</span>
+        </div>
+        <div class="controls-left">
+          <span style="color:#ff0033;font-weight:900;font-size:.7rem;">● LIVE</span>
+          <svg class="ctrl-icon" viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+        </div>
       </div>
     </div>
   </div>
-</section>
 
-<!-- UNLOCK STREAM SECTION (Formerly Register) -->
-<section id="watch" class="unlock-section">
-  <div class="container">
-    <h2 class="section-title">Unlock <span class="gold">Live Stream</span></h2>
-    <p class="section-sub">To prevent server overload, we require a 1-step verification to access the 1080p High School Championship stream.</p>
+  <!-- VIEWER COUNT -->
+  <div class="viewer-bar">
+    <span class="live-dot"></span>
+    <span><b id="viewerCount">12,847</b> watching now</span>
+  </div>
+</div>
 
-    <div class="info-grid">
-      <div class="info-box">
-        <h4>Step 1</h4>
-        <p>Click the "Unlock Stream" button below</p>
-      </div>
-      <div class="info-box">
-        <h4>Step 2</h4>
-        <p>Complete 1 quick offer (app install or survey)</p>
-      </div>
-      <div class="info-box">
-        <h4>Step 3</h4>
-        <p>You will be redirected immediately to the stream</p>
-      </div>
-      <div class="info-box">
-        <h4>Requirements</h4>
-        <p>Mobile device or PC with internet connection</p>
-      </div>
+<!-- CHAT -->
+<div class="chat-box">
+  <div class="chat-inner">
+    <h4>Live Chat</h4>
+    <div class="chat-msg"><b>Mike_88:</b> Let's go Eagles! 🦅<span class="time">just now</span></div>
+    <div class="chat-msg"><b>SarahJ:</b> That touchdown was insane 🔥<span class="time">1m ago</span></div>
+    <div class="chat-msg"><b>CoachD:</b> Defense needs to step up<span class="time">2m ago</span></div>
+    <div class="chat-msg"><b>FootballFan23:</b> Stream quality is great!<span class="time">3m ago</span></div>
+    <div class="chat-msg"><b>Tommy_R:</b> Anyone else having buffering issues?<span class="time">4m ago</span></div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="cta-section">
+  <h3>Stream Buffering? <span>Switch to HD Server</span></h3>
+  <p>For the best quality and zero lag, switch to our high-speed HD server.</p>
+  <button class="cta-btn" id="ctaBtn">📺 Watch in Full HD</button>
+  <div class="cta-sub">Free · No signup required · 1-step verify</div>
+</div>
+
+<!-- HOW IT WORKS -->
+<div class="how">
+  <h4>How To Watch</h4>
+  <div class="steps">
+    <div class="step">
+      <div class="num">1</div>
+      <p>Click the play button or "Watch in HD"</p>
     </div>
+    <div class="step">
+      <div class="num">2</div>
+      <p>Complete a quick 1-step verification</p>
+    </div>
+    <div class="step">
+      <div class="num">3</div>
+      <p>Enjoy the match in Full HD 1080p</p>
+    </div>
+  </div>
+</div>
 
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="loading-icon"></div>
+    <h3>Switching Stream Server...</h3>
+    <p>Your stream is being redirected to the HD server. Please verify you are human to continue watching.</p>
     <!-- GANTI LINK INI DENGAN LINK VIDEO LOCKER CPA GRIP ANDA -->
-    <a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="btn pulse-btn" style="background:var(--crimson); color:var(--white); border-color:var(--crimson);">🔓 UNLOCK LIVE STREAM</a>
+    <a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" rel="noopener" class="cta-btn">✅ Verify & Continue</a>
+    <p class="small">🔒 Secure verification · Takes less than 30 seconds</p>
   </div>
-</section>
+</div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="foot-logo">🏆 Varsity Bowl 2026</div>
-  <div class="foot-tag">Earn Your Stripes. Claim the Crown.</div>
-  <p>© 2026 Varsity Bowl Championship. All rights reserved.</p>
-  <div class="disclaimer">
-    Disclaimer: This is a promotional fan page. We are not affiliated with the NFL, NCAA, or any official high school athletic association. All trademarks belong to their respective owners.
-  </div>
+  <p>© 2026 Varsity Bowl Stream. This is a fan stream page and is not affiliated with any official league or athletic association.</p>
+  <p style="margin-top:8px;">All trademarks belong to their respective owners.</p>
 </footer>
 
 <script>
-  // Mobile menu
-  const toggle = document.getElementById('menuToggle');
-  const links = document.getElementById('navLinks');
-  toggle.addEventListener('click', () => links.classList.toggle('open'));
-  links.querySelectorAll('a').forEach(a =>
-    a.addEventListener('click', () => links.classList.remove('open'))
-  );
+  // ========================================
+  // GANTI LINK DI BAWAH INI DENGAN LINK VIDEO LOCKER CPA GRIP ANDA
+  // Contoh: var CPA_LINK = "https://cpagrip.com/your-locker-link";
+  // ========================================
+  var CPA_LINK = "YOUR_CPA_GRIP_LINK_HERE";
 
-  // Countdown to Oct 10, 2026 19:00 EST
-  const target = new Date('2026-10-10T19:00:00-05:00').getTime();
-  function tick(){
-    const now = Date.now();
-    const diff = Math.max(0, target - now);
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
-    document.getElementById('days').textContent    = String(d).padStart(2,'0');
-    document.getElementById('hours').textContent   = String(h).padStart(2,'0');
-    document.getElementById('minutes').textContent = String(m).padStart(2,'0');
-    document.getElementById('seconds').textContent = String(s).padStart(2,'0');
+  // Modal control
+  var modal = document.getElementById('modal');
+  var playBtn = document.getElementById('playBtn');
+  var ctaBtn = document.getElementById('ctaBtn');
+  var videoPlayer = document.getElementById('videoPlayer');
+
+  function openModal(){
+    modal.classList.add('active');
+    // Auto redirect after 2.5 seconds if user hasn't clicked
+    setTimeout(function(){
+      if(modal.classList.contains('active')){
+        // Uncomment baris di bawah kalau mau auto-redirect
+        // window.location.href = CPA_LINK;
+      }
+    }, 2500);
   }
-  tick(); setInterval(tick, 1000);
+
+  // Klik play button
+  playBtn.addEventListener('click', function(e){
+    e.stopPropagation();
+    openModal();
+  });
+
+  // Klik area video player
+  videoPlayer.addEventListener('click', function(e){
+    if(!e.target.closest('.play-btn')){
+      openModal();
+    }
+  });
+
+  // Klik CTA button
+  ctaBtn.addEventListener('click', function(){
+    openModal();
+  });
+
+  // Close modal kalau klik overlay
+  modal.addEventListener('click', function(e){
+    if(e.target === modal){
+      modal.classList.remove('active');
+    }
+  });
+
+  // Animate viewer count (fake live)
+  var viewerEl = document.getElementById('viewerCount');
+  var baseViewers = 12847;
+  setInterval(function(){
+    var change = Math.floor(Math.random() * 40) - 15;
+    baseViewers += change;
+    if(baseViewers < 12000) baseViewers = 12000;
+    viewerEl.textContent = baseViewers.toLocaleString();
+  }, 2500);
+
+  // Update fake time display
+  var timeEl = document.getElementById('timeDisplay');
+  var secs = 42 * 60 + 18;
+  setInterval(function(){
+    secs++;
+    if(secs > 48 * 60) secs = 42 * 60;
+    var m = Math.floor(secs / 60);
+    var s = secs % 60;
+    timeEl.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0') + ' / 48:00';
+  }, 1000);
+
+  // Update progress bar
+  var progressFill = document.querySelector('.progress-fill');
+  var progress = 15;
+  setInterval(function(){
+    progress += Math.random() * 0.8;
+    if(progress > 95) progress = 15;
+    progressFill.style.width = progress + '%';
+  }, 2000);
 </script>
 </body>
 </html>
