@@ -70,40 +70,45 @@
   /* MATCH HEADER */
   .match-header{
     background:linear-gradient(135deg,var(--navy),var(--navy-2));
-    padding:20px 16px 24px;
+    padding:20px 10px 24px;
     text-align:center;
     border-bottom:1px solid #1a1a1a;
   }
   .match-header .league{
     font-size:.75rem;
-    letter-spacing:3px;
+    letter-spacing:2px;
     color:var(--gold);
     font-weight:900;
     text-transform:uppercase;
     margin-bottom:12px;
   }
+  
+  /* PERUBAHAN 1: Judul Tim Sejajar Responsif */
   .matchup{
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:16px;
+    gap:8px; /* Jarak antar elemen diperkecil */
     margin-bottom:12px;
-    flex-wrap:wrap;
+    flex-wrap:nowrap; /* Paksa sejajar dalam satu baris */
+    width: 100%;
   }
   .team-name{
-    font-size:clamp(1rem,4vw,1.4rem);
+    font-size:clamp(0.75rem, 3.8vw, 1.4rem); /* Ukuran font menyesuaikan lebar layar */
     font-weight:900;
     text-transform:uppercase;
-    letter-spacing:1px;
+    letter-spacing:0.5px;
+    white-space:nowrap;
   }
   .vs{
     color:var(--crimson);
     font-weight:900;
-    font-size:1.1rem;
-    padding:4px 10px;
+    font-size:clamp(0.75rem, 3vw, 1.1rem);
+    padding:4px 8px;
     background:rgba(200,16,46,.15);
     border:1px solid var(--crimson);
     border-radius:6px;
+    flex-shrink:0;
   }
   .match-meta{
     font-size:.8rem;
@@ -115,17 +120,18 @@
   }
   .match-meta span{display:inline-flex;align-items:center;gap:5px;}
 
-  /* VIDEO PLAYER */
+  /* PERUBAHAN 2: Video Player Full Kiri Kanan */
   .player-wrap{
-    padding:20px 16px 0;
-    max-width:900px;
-    margin:0 auto;
+    padding:20px 0 0; /* Hapus padding kiri kanan */
+    width: 100%;
+    max-width:100%; /* Full width */
+    margin: 0 auto;
   }
   .video-player{
     position:relative;
     width:100%;
     background:#000;
-    border-radius:12px;
+    border-radius:0; /* Hapus sudut melengkung untuk tampilan full */
     overflow:hidden;
     box-shadow:0 20px 60px rgba(0,0,0,.7), 0 0 0 1px rgba(245,197,24,.2);
     aspect-ratio:16/9;
@@ -180,7 +186,7 @@
     z-index:5;
     top:50%;left:50%;
     transform:translate(-50%,-50%);
-    width:90px;height:90px;
+    width:80px;height:80px;
     background:rgba(200,16,46,.95);
     border-radius:50%;
     display:flex;align-items:center;justify-content:center;
@@ -191,7 +197,7 @@
     cursor:pointer;
   }
   .play-btn svg{
-    width:36px;height:36px;
+    width:32px;height:32px;
     margin-left:6px;
     fill:#fff;
   }
@@ -481,17 +487,17 @@
 
   /* MOBILE */
   @media(max-width:600px){
-    .play-btn{width:72px;height:72px;border-width:3px;}
+    .play-btn{width:70px;height:70px;border-width:3px;}
     .play-btn svg{width:28px;height:28px;}
     .poster-text .champ{font-size:1.1rem;}
     .poster-text .sub{font-size:.7rem;}
-    .matchup{gap:10px;}
     .steps{grid-template-columns:1fr;}
     .step{display:flex;align-items:center;gap:12px;text-align:left;padding:14px;}
     .step .num{margin:0;flex-shrink:0;}
     .controls-row{font-size:.72rem;}
     .ctrl-icon{width:15px;height:15px;}
     .cta-btn{font-size:.9rem;padding:16px 18px;}
+    .player-controls{padding: 12px 10px 8px;} /* Padding kontrol disesuaikan */
   }
 </style>
 </head>
@@ -506,6 +512,7 @@
 <!-- MATCH HEADER -->
 <div class="match-header">
   <div class="league">National Championship · Final</div>
+  <!-- PERUBAHAN: Kelas matchup & team-name disesuaikan agar sejajar -->
   <div class="matchup">
     <div class="team-name">Northside Eagles</div>
     <div class="vs">VS</div>
@@ -619,11 +626,9 @@
 <script>
   // ========================================
   // GANTI LINK DI BAWAH INI DENGAN LINK VIDEO LOCKER CPA GRIP ANDA
-  // Contoh: var CPA_LINK = "https://cpagrip.com/your-locker-link";
   // ========================================
   var CPA_LINK = "YOUR_CPA_GRIP_LINK_HERE";
 
-  // Modal control
   var modal = document.getElementById('modal');
   var playBtn = document.getElementById('playBtn');
   var ctaBtn = document.getElementById('ctaBtn');
@@ -631,41 +636,35 @@
 
   function openModal(){
     modal.classList.add('active');
-    // Auto redirect after 2.5 seconds if user hasn't clicked
     setTimeout(function(){
       if(modal.classList.contains('active')){
-        // Uncomment baris di bawah kalau mau auto-redirect
-        // window.location.href = CPA_LINK;
+        // window.location.href = CPA_LINK; // Aktifkan jika ingin auto-redirect
       }
     }, 2500);
   }
 
-  // Klik play button
   playBtn.addEventListener('click', function(e){
     e.stopPropagation();
     openModal();
   });
 
-  // Klik area video player
   videoPlayer.addEventListener('click', function(e){
     if(!e.target.closest('.play-btn')){
       openModal();
     }
   });
 
-  // Klik CTA button
   ctaBtn.addEventListener('click', function(){
     openModal();
   });
 
-  // Close modal kalau klik overlay
   modal.addEventListener('click', function(e){
     if(e.target === modal){
       modal.classList.remove('active');
     }
   });
 
-  // Animate viewer count (fake live)
+  // Fake viewer count
   var viewerEl = document.getElementById('viewerCount');
   var baseViewers = 12847;
   setInterval(function(){
@@ -675,7 +674,7 @@
     viewerEl.textContent = baseViewers.toLocaleString();
   }, 2500);
 
-  // Update fake time display
+  // Fake time display
   var timeEl = document.getElementById('timeDisplay');
   var secs = 42 * 60 + 18;
   setInterval(function(){
@@ -686,7 +685,7 @@
     timeEl.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0') + ' / 48:00';
   }, 1000);
 
-  // Update progress bar
+  // Fake progress bar
   var progressFill = document.querySelector('.progress-fill');
   var progress = 15;
   setInterval(function(){
