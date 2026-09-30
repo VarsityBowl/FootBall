@@ -82,19 +82,17 @@
     text-transform:uppercase;
     margin-bottom:12px;
   }
-  
-  /* PERUBAHAN 1: Judul Tim Sejajar Responsif */
   .matchup{
     display:flex;
     align-items:center;
     justify-content:center;
-    gap:8px; /* Jarak antar elemen diperkecil */
+    gap:8px;
     margin-bottom:12px;
-    flex-wrap:nowrap; /* Paksa sejajar dalam satu baris */
+    flex-wrap:nowrap;
     width: 100%;
   }
   .team-name{
-    font-size:clamp(0.75rem, 3.8vw, 1.4rem); /* Ukuran font menyesuaikan lebar layar */
+    font-size:clamp(0.75rem, 3.8vw, 1.4rem);
     font-weight:900;
     text-transform:uppercase;
     letter-spacing:0.5px;
@@ -120,18 +118,18 @@
   }
   .match-meta span{display:inline-flex;align-items:center;gap:5px;}
 
-  /* PERUBAHAN 2: Video Player Full Kiri Kanan */
+  /* VIDEO PLAYER */
   .player-wrap{
-    padding:20px 0 0; /* Hapus padding kiri kanan */
+    padding:20px 0 0;
     width: 100%;
-    max-width:100%; /* Full width */
+    max-width:100%;
     margin: 0 auto;
   }
   .video-player{
     position:relative;
     width:100%;
     background:#000;
-    border-radius:0; /* Hapus sudut melengkung untuk tampilan full */
+    border-radius:0;
     overflow:hidden;
     box-shadow:0 20px 60px rgba(0,0,0,.7), 0 0 0 1px rgba(245,197,24,.2);
     aspect-ratio:16/9;
@@ -277,7 +275,7 @@
   }
   .viewer-bar b{color:#fff;}
 
-  /* CHAT WIDGET (Fake) */
+  /* CHAT WIDGET (Live) */
   .chat-box{
     max-width:900px;
     margin:0 auto;
@@ -288,8 +286,20 @@
     border:1px solid #222;
     border-radius:10px;
     padding:16px;
-    max-height:220px;
-    overflow:hidden;
+    max-height:250px;
+    overflow-y:auto; /* Bisa di-scroll */
+    scrollbar-width:thin;
+    scrollbar-color: var(--crimson) var(--dark);
+  }
+  .chat-inner::-webkit-scrollbar {
+    width: 6px;
+  }
+  .chat-inner::-webkit-scrollbar-track {
+    background: var(--dark);
+  }
+  .chat-inner::-webkit-scrollbar-thumb {
+    background-color: var(--crimson);
+    border-radius: 3px;
   }
   .chat-inner h4{
     font-size:.75rem;
@@ -299,18 +309,29 @@
     margin-bottom:12px;
     border-bottom:1px solid #222;
     padding-bottom:8px;
+    position: sticky;
+    top: 0;
+    background: var(--dark-2);
+    z-index: 2;
   }
   .chat-msg{
     font-size:.82rem;
     margin-bottom:10px;
     line-height:1.4;
     color:#ddd;
+    animation: slideIn 0.3s ease-out; /* Animasi pesan baru */
   }
   .chat-msg b{color:var(--gold);}
   .chat-msg .time{
     color:#555;
     font-size:.7rem;
     margin-left:6px;
+  }
+  
+  /* ANIMASI CHAT */
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   /* CTA SECTION */
@@ -497,7 +518,7 @@
     .controls-row{font-size:.72rem;}
     .ctrl-icon{width:15px;height:15px;}
     .cta-btn{font-size:.9rem;padding:16px 18px;}
-    .player-controls{padding: 12px 10px 8px;} /* Padding kontrol disesuaikan */
+    .player-controls{padding: 12px 10px 8px;}
   }
 </style>
 </head>
@@ -512,7 +533,6 @@
 <!-- MATCH HEADER -->
 <div class="match-header">
   <div class="league">National Championship · Final</div>
-  <!-- PERUBAHAN: Kelas matchup & team-name disesuaikan agar sejajar -->
   <div class="matchup">
     <div class="team-name">Northside Eagles</div>
     <div class="vs">VS</div>
@@ -568,13 +588,15 @@
 
 <!-- CHAT -->
 <div class="chat-box">
-  <div class="chat-inner">
+  <!-- ID chatBox ditambahkan untuk JS -->
+  <div class="chat-inner" id="chatBox">
     <h4>Live Chat</h4>
+    <!-- Pesan awal -->
     <div class="chat-msg"><b>Mike_88:</b> Let's go Eagles! 🦅<span class="time">just now</span></div>
-    <div class="chat-msg"><b>SarahJ:</b> That touchdown was insane 🔥<span class="time">1m ago</span></div>
-    <div class="chat-msg"><b>CoachD:</b> Defense needs to step up<span class="time">2m ago</span></div>
-    <div class="chat-msg"><b>FootballFan23:</b> Stream quality is great!<span class="time">3m ago</span></div>
-    <div class="chat-msg"><b>Tommy_R:</b> Anyone else having buffering issues?<span class="time">4m ago</span></div>
+    <div class="chat-msg"><b>SarahJ:</b> That touchdown was insane 🔥<span class="time">just now</span></div>
+    <div class="chat-msg"><b>CoachD:</b> Defense needs to step up<span class="time">just now</span></div>
+    <div class="chat-msg"><b>FootballFan23:</b> Stream quality is great!<span class="time">just now</span></div>
+    <div class="chat-msg"><b>Tommy_R:</b> Anyone else having buffering issues?<span class="time">just now</span></div>
   </div>
 </div>
 
@@ -625,7 +647,7 @@
 
 <script>
   // ========================================
-  // GANTI LINK DI BAWAH INI DENGAN LINK VIDEO LOCKER CPA GRIP ANDA
+  // 1. GANTI LINK DI BAWAH INI DENGAN LINK VIDEO LOCKER CPA GRIP ANDA
   // ========================================
   var CPA_LINK = "YOUR_CPA_GRIP_LINK_HERE";
 
@@ -664,7 +686,9 @@
     }
   });
 
-  // Fake viewer count
+  // ========================================
+  // 2. FAKE VIEWER COUNT
+  // ========================================
   var viewerEl = document.getElementById('viewerCount');
   var baseViewers = 12847;
   setInterval(function(){
@@ -674,7 +698,9 @@
     viewerEl.textContent = baseViewers.toLocaleString();
   }, 2500);
 
-  // Fake time display
+  // ========================================
+  // 3. FAKE TIME DISPLAY
+  // ========================================
   var timeEl = document.getElementById('timeDisplay');
   var secs = 42 * 60 + 18;
   setInterval(function(){
@@ -685,7 +711,9 @@
     timeEl.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0') + ' / 48:00';
   }, 1000);
 
-  // Fake progress bar
+  // ========================================
+  // 4. FAKE PROGRESS BAR
+  // ========================================
   var progressFill = document.querySelector('.progress-fill');
   var progress = 15;
   setInterval(function(){
@@ -693,6 +721,62 @@
     if(progress > 95) progress = 15;
     progressFill.style.width = progress + '%';
   }, 2000);
+
+  // ========================================
+  // 5. LIVE CHAT SYSTEM (BARU & HIDUP)
+  // ========================================
+  var chatBox = document.getElementById('chatBox');
+  
+  // Daftar user dan pesan acak
+  var users = [
+    'EagleEye_22', 'TitanUp99', 'GridironGuru', 'JennyFromLA', 
+    'CoachK', 'SportsFanatic', 'DefenseWins', 'QB1_Mom', 
+    'FootballFreak', 'PrimetimePlayer', 'TailgateKing', 'MVP_Mike'
+  ];
+  
+  var messages = [
+    "Let's go!!! 🔥", "What a play!", "Defense is solid today", 
+    "Anyone else buffering?", "This QB is insane 🤯", "TOUCHDOWN!!! 🏈", 
+    "Refs are blind man", "Best game this season", "Stream is smooth now", 
+    "Who's winning?", "Just tuned in, what did I miss?", "That catch was crazy", 
+    "OMG WHAT A CATCH", "Kick the field goal!", "This is going to OT", 
+    "Eagles all the way! 🦅", "Titans need a miracle", "Best stream quality so far"
+  ];
+
+  function addChatMessage() {
+    // Pilih user dan pesan acak
+    var randomUser = users[Math.floor(Math.random() * users.length)];
+    var randomMsg = messages[Math.floor(Math.random() * messages.length)];
+    
+    // Buat elemen div baru
+    var msgDiv = document.createElement('div');
+    msgDiv.className = 'chat-msg';
+    
+    // Format jam
+    var now = new Date();
+    var timeString = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
+    
+    msgDiv.innerHTML = `<b>${randomUser}:</b> ${randomMsg} <span class="time">${timeString}</span>`;
+    
+    // Tambahkan ke chat box
+    chatBox.appendChild(msgDiv);
+    
+    // Batasi jumlah pesan (misal maksimal 15 pesan agar tidak berat)
+    if (chatBox.children.length > 15) {
+      // Hapus pesan paling atas (index 0 adalah header, jadi hapus index 1)
+      chatBox.removeChild(chatBox.children[1]);
+    }
+    
+    // Auto-scroll ke bawah
+    chatBox.scrollTop = chatBox.scrollHeight;
+    
+    // Panggil fungsi ini lagi setelah waktu acak (antara 3 sampai 8 detik)
+    var nextInterval = Math.random() * 5000 + 3000;
+    setTimeout(addChatMessage, nextInterval);
+  }
+
+  // Mulai live chat setelah 2 detik pertama
+  setTimeout(addChatMessage, 2000);
 </script>
 </body>
 </html>
