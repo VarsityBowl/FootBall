@@ -3,13 +3,15 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Gridiron Glory — National High School Football Championship</title>
-<meta name="description" content="Gridiron Glory — National High School Football Championship 2026. Friday Nights. Big Dreams. One Champion." />
+<title>Varsity Bowl — National High School Football Championship</title>
+<meta name="description" content="Varsity Bowl — National High School Football Championship 2026. Earn Your Stripes. Claim the Crown." />
 <style>
   :root{
-    --green:#0b3d1e;
-    --green-2:#0f5128;
+    --navy:#0a1f44;
+    --navy-2:#0d2a5c;
     --field:#1a7a3f;
+    --crimson:#c8102e;
+    --crimson-2:#a00d24;
     --gold:#f5c518;
     --gold-2:#e0a800;
     --dark:#0a0a0a;
@@ -32,7 +34,7 @@
   /* NAV */
   nav{
     position:sticky;top:0;z-index:100;
-    background:rgba(10,10,10,0.95);
+    background:rgba(10,31,68,0.97);
     backdrop-filter:blur(10px);
     border-bottom:2px solid var(--gold);
     padding:14px 0;
@@ -42,7 +44,9 @@
     font-weight:900;font-size:1.4rem;letter-spacing:1px;
     color:var(--gold);
     text-transform:uppercase;
+    display:flex;align-items:center;gap:10px;
   }
+  .logo .trophy{font-size:1.3rem;}
   .logo span{color:var(--white);}
   .nav-links{display:flex;gap:28px;list-style:none;}
   .nav-links a{
@@ -61,37 +65,44 @@
     text-align:center;
     padding:80px 20px;
     background:
-      linear-gradient(rgba(10,10,10,0.7),rgba(10,10,10,0.85)),
+      linear-gradient(rgba(10,31,68,0.85),rgba(10,10,10,0.9)),
       repeating-linear-gradient(90deg,
         var(--field) 0 60px,
-        var(--green-2) 60px 62px);
+        #0f5128 60px 62px);
     overflow:hidden;
   }
   header.hero::before{
     content:"";position:absolute;inset:0;
-    background:radial-gradient(circle at 50% 50%,transparent 0%,rgba(0,0,0,0.85) 100%);
+    background:radial-gradient(circle at 50% 40%,rgba(200,16,46,0.15) 0%,transparent 60%);
     pointer-events:none;
   }
   .hero-content{position:relative;z-index:2;max-width:900px;}
   .badge{
     display:inline-block;
-    background:var(--gold);color:var(--dark);
+    background:var(--crimson);color:var(--white);
     font-weight:900;font-size:.8rem;letter-spacing:3px;
     padding:8px 18px;border-radius:4px;
     text-transform:uppercase;margin-bottom:24px;
+    border:1px solid var(--gold);
+  }
+  .trophy-icon{
+    font-size:3rem;margin-bottom:10px;
+    filter:drop-shadow(0 4px 20px rgba(245,197,24,0.4));
   }
   .hero h1{
-    font-size:clamp(2.2rem,6vw,4.5rem);
-    font-weight:900;line-height:1.05;
+    font-size:clamp(2.4rem,7vw,5rem);
+    font-weight:900;line-height:1;
     text-transform:uppercase;letter-spacing:-1px;
     margin-bottom:20px;
     text-shadow:0 4px 30px rgba(0,0,0,0.8);
   }
   .hero h1 .gold{color:var(--gold);}
+  .hero h1 .crimson{color:var(--crimson);}
   .hero p.sub{
     font-size:clamp(1rem,2vw,1.25rem);
     color:var(--gray);margin-bottom:32px;
     font-weight:500;
+    letter-spacing:1px;
   }
   .hero-info{
     display:flex;gap:32px;justify-content:center;flex-wrap:wrap;
@@ -102,7 +113,7 @@
   .hero-info .value{font-size:1.1rem;font-weight:700;}
   .btn{
     display:inline-block;
-    background:var(--gold);color:var(--dark);
+    background:var(--gold);color:var(--navy);
     padding:16px 38px;border-radius:6px;
     font-weight:900;text-transform:uppercase;letter-spacing:2px;
     font-size:.95rem;
@@ -112,7 +123,9 @@
   }
   .btn:hover{background:transparent;color:var(--gold);transform:translateY(-2px);}
   .btn-outline{background:transparent;color:var(--gold);}
-  .btn-outline:hover{background:var(--gold);color:var(--dark);}
+  .btn-outline:hover{background:var(--gold);color:var(--navy);}
+  .btn-crimson{background:var(--crimson);color:var(--white);border-color:var(--crimson);}
+  .btn-crimson:hover{background:transparent;color:var(--crimson);}
 
   /* SECTION */
   section{padding:90px 0;}
@@ -122,6 +135,7 @@
     letter-spacing:-0.5px;margin-bottom:12px;
   }
   .section-title .gold{color:var(--gold);}
+  .section-title .crimson{color:var(--crimson);}
   .section-sub{
     color:var(--gray);margin-bottom:48px;
     font-size:1.05rem;max-width:700px;
@@ -131,10 +145,10 @@
 
   /* COUNTDOWN */
   .countdown-wrap{
-    background:linear-gradient(135deg,var(--green),var(--green-2));
+    background:linear-gradient(135deg,var(--navy),var(--navy-2));
     padding:60px 20px;text-align:center;
     border-top:3px solid var(--gold);
-    border-bottom:3px solid var(--gold);
+    border-bottom:3px solid var(--crimson);
   }
   .countdown-wrap h3{
     font-size:1rem;letter-spacing:4px;text-transform:uppercase;
@@ -145,6 +159,11 @@
     background:rgba(0,0,0,0.5);
     border:2px solid var(--gold);
     border-radius:8px;padding:18px 24px;min-width:100px;
+    position:relative;
+  }
+  .cd-box::after{
+    content:"";position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--crimson),var(--gold),var(--crimson));
   }
   .cd-num{font-size:2.4rem;font-weight:900;color:var(--gold);line-height:1;}
   .cd-label{font-size:.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray);margin-top:6px;}
@@ -156,7 +175,7 @@
     box-shadow:0 10px 40px rgba(0,0,0,0.5);
   }
   .schedule-table th{
-    background:var(--gold);color:var(--dark);
+    background:var(--gold);color:var(--navy);
     padding:16px;text-align:left;
     font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;
     font-weight:900;
@@ -167,10 +186,11 @@
   }
   .schedule-table tr:hover td{background:rgba(245,197,24,0.05);}
   .round-tag{
-    display:inline-block;background:var(--green);color:var(--gold);
+    display:inline-block;background:var(--navy);color:var(--gold);
     font-size:.7rem;font-weight:900;letter-spacing:1px;
     padding:3px 10px;border-radius:3px;text-transform:uppercase;
   }
+  .round-tag.final{background:var(--crimson);color:var(--white);}
 
   /* TEAMS */
   .teams-grid{
@@ -183,17 +203,27 @@
     border:2px solid #222;border-radius:10px;
     padding:28px 20px;text-align:center;
     transition:all .25s;
+    position:relative;
+    overflow:hidden;
   }
+  .team-card::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:3px;
+    background:var(--crimson);
+    transform:scaleX(0);transform-origin:left;
+    transition:transform .3s;
+  }
+  .team-card:hover::before{transform:scaleX(1);}
   .team-card:hover{
     border-color:var(--gold);transform:translateY(-5px);
     box-shadow:0 15px 40px rgba(245,197,24,0.15);
   }
   .team-logo{
     width:64px;height:64px;border-radius:50%;
-    background:linear-gradient(135deg,var(--gold),var(--gold-2));
+    background:linear-gradient(135deg,var(--navy),var(--crimson));
     display:flex;align-items:center;justify-content:center;
-    font-weight:900;font-size:1.6rem;color:var(--dark);
+    font-weight:900;font-size:1.6rem;color:var(--gold);
     margin:0 auto 16px;
+    border:2px solid var(--gold);
   }
   .team-card h4{font-size:1.1rem;font-weight:800;text-transform:uppercase;margin-bottom:4px;}
   .team-card .school{font-size:.85rem;color:var(--gray);}
@@ -204,13 +234,13 @@
 
   /* REGISTER */
   .register{
-    background:linear-gradient(135deg,var(--green),var(--green-2));
+    background:linear-gradient(135deg,var(--navy),var(--crimson-2));
     text-align:center;border-top:3px solid var(--gold);
     border-bottom:3px solid var(--gold);
   }
   .register .section-title,
   .register .section-sub{color:var(--white);}
-  .register .section-sub{color:#d8e8dc;margin-left:auto;margin-right:auto;}
+  .register .section-sub{color:#e0e8f0;margin-left:auto;margin-right:auto;}
   .info-grid{
     display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:24px;margin:48px 0;text-align:left;
@@ -257,13 +287,17 @@
     font-weight:900;font-size:1.2rem;letter-spacing:2px;
     color:var(--gold);text-transform:uppercase;margin-bottom:10px;
   }
+  footer .foot-tag{
+    color:var(--crimson);font-weight:700;font-size:.8rem;
+    letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;
+  }
 
   /* MOBILE */
   @media(max-width:768px){
     .menu-toggle{display:block;}
     .nav-links{
       display:none;position:absolute;top:100%;left:0;right:0;
-      background:rgba(10,10,10,0.98);flex-direction:column;
+      background:rgba(10,31,68,0.98);flex-direction:column;
       padding:20px;gap:16px;border-bottom:2px solid var(--gold);
     }
     .nav-links.open{display:flex;}
@@ -280,7 +314,7 @@
 <!-- NAV -->
 <nav>
   <div class="container nav-inner">
-    <div class="logo">Gridiron <span>Glory</span></div>
+    <div class="logo"><span class="trophy">🏆</span>Varsity <span>Bowl</span></div>
     <button class="menu-toggle" id="menuToggle">☰</button>
     <ul class="nav-links" id="navLinks">
       <li><a href="#schedule">Schedule</a></li>
@@ -294,9 +328,10 @@
 <!-- HERO -->
 <header class="hero">
   <div class="hero-content">
+    <div class="trophy-icon">🏆</div>
     <div class="badge">2026 Season</div>
-    <h1>Gridiron <span class="gold">Glory</span><br/>National High School Football Championship</h1>
-    <p class="sub">Friday Nights. Big Dreams. One Champion.</p>
+    <h1>Varsity <span class="gold">Bowl</span><br/>National High School Football Championship</h1>
+    <p class="sub">Earn Your Stripes. Claim the Crown.</p>
 
     <div class="hero-info">
       <div>
@@ -313,7 +348,7 @@
       </div>
     </div>
 
-    <a href="#register" class="btn">Register Your Team</a>
+    <a href="#register" class="btn btn-crimson">Register Your Team</a>
   </div>
 </header>
 
@@ -343,7 +378,6 @@
           <th>Time</th>
           <th>Matchup</th>
           <th>Round</th>
-          <th>Field</th>
         </tr>
       </thead>
       <tbody>
@@ -352,35 +386,30 @@
           <td>7:00 PM</td>
           <td>Northside Eagles vs. Central Titans</td>
           <td><span class="round-tag">Round 1</span></td>
-          <td>Memorial Stadium</td>
         </tr>
         <tr>
           <td>Oct 10, 2026</td>
           <td>9:30 PM</td>
           <td>Westlake Wolves vs. East Ridge Bears</td>
           <td><span class="round-tag">Round 1</span></td>
-          <td>Memorial Stadium</td>
         </tr>
         <tr>
           <td>Oct 11, 2026</td>
           <td>7:00 PM</td>
           <td>Southside Storm vs. Riverside Raiders</td>
           <td><span class="round-tag">Quarterfinal</span></td>
-          <td>Memorial Stadium</td>
         </tr>
         <tr>
           <td>Oct 12, 2026</td>
           <td>8:00 PM</td>
           <td>Winner QF1 vs. Winner QF2</td>
           <td><span class="round-tag">Semifinal</span></td>
-          <td>Memorial Stadium</td>
         </tr>
         <tr>
           <td>Oct 15, 2026</td>
           <td>8:00 PM</td>
           <td>TBD vs. TBD</td>
-          <td><span class="round-tag">Championship</span></td>
-          <td>Memorial Stadium</td>
+          <td><span class="round-tag final">Championship</span></td>
         </tr>
       </tbody>
     </table>
@@ -392,7 +421,7 @@
   <div class="container">
     <div class="section-head">
       <h2 class="section-title">Varsity <span class="gold">Teams</span></h2>
-      <p class="section-sub">16 of the nation's top high school football programs compete for the crown.</p>
+      <p class="section-sub">16 of the nation's top high school football programs compete for the Varsity Bowl crown.</p>
     </div>
 
     <div class="teams-grid">
@@ -482,14 +511,14 @@
   <div class="container">
     <div class="section-head">
       <h2 class="section-title">Get in <span class="gold">Touch</span></h2>
-      <p class="section-sub">Questions about the tournament? Our team responds within 24 hours.</p>
+      <p class="section-sub">Questions about the Varsity Bowl? Our team responds within 24 hours.</p>
     </div>
 
     <div class="contact-grid">
       <div class="contact-card">
         <div class="icon">📧</div>
         <h4>Email</h4>
-        <p>info@gridironglory.com</p>
+        <p>info@varsitybowl.com</p>
       </div>
       <div class="contact-card">
         <div class="icon">📞</div>
@@ -504,7 +533,7 @@
       <div class="contact-card">
         <div class="icon">📱</div>
         <h4>Social</h4>
-        <p>@GridironGlory</p>
+        <p>@VarsityBowl</p>
       </div>
     </div>
   </div>
@@ -512,8 +541,9 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="foot-logo">Gridiron Glory 2026</div>
-  <p>© 2026 Gridiron Glory Championship. All rights reserved. Friday Nights. Big Dreams. One Champion.</p>
+  <div class="foot-logo">🏆 Varsity Bowl 2026</div>
+  <div class="foot-tag">Earn Your Stripes. Claim the Crown.</div>
+  <p>© 2026 Varsity Bowl Championship. All rights reserved.</p>
 </footer>
 
 <script>
@@ -525,7 +555,7 @@
     a.addEventListener('click', () => links.classList.remove('open'))
   );
 
-  // Countdown to Oct 10, 2026 19:00
+  // Countdown to Oct 10, 2026 19:00 EST
   const target = new Date('2026-10-10T19:00:00-05:00').getTime();
   function tick(){
     const now = Date.now();
