@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Varsity Bowl — National High School Football Championship</title>
-<meta name="description" content="Varsity Bowl — National High School Football Championship 2026. Earn Your Stripes. Claim the Crown." />
+<title>Varsity Bowl — Watch Live High School Football Championship</title>
+<meta name="description" content="Watch the Varsity Bowl National High School Football Championship 2026 Live Stream in HD." />
 <style>
   :root{
     --navy:#0a1f44;
@@ -122,10 +122,19 @@
     cursor:pointer;
   }
   .btn:hover{background:transparent;color:var(--gold);transform:translateY(-2px);}
-  .btn-outline{background:transparent;color:var(--gold);}
-  .btn-outline:hover{background:var(--gold);color:var(--navy);}
   .btn-crimson{background:var(--crimson);color:var(--white);border-color:var(--crimson);}
   .btn-crimson:hover{background:transparent;color:var(--crimson);}
+  
+  /* PULSE ANIMATION FOR CPA BUTTON */
+  .pulse-btn {
+    animation: pulse 2s infinite;
+    box-shadow: 0 0 0 0 rgba(200, 16, 46, 0.7);
+  }
+  @keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(200, 16, 46, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 15px rgba(200, 16, 46, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(200, 16, 46, 0); }
+  }
 
   /* SECTION */
   section{padding:90px 0;}
@@ -191,6 +200,20 @@
     padding:3px 10px;border-radius:3px;text-transform:uppercase;
   }
   .round-tag.final{background:var(--crimson);color:var(--white);}
+  .watch-link {
+    color: var(--crimson);
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    border: 1px solid var(--crimson);
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+  .watch-link:hover {
+    background: var(--crimson);
+    color: var(--white);
+  }
 
   /* TEAMS */
   .teams-grid{
@@ -231,16 +254,31 @@
     margin-top:12px;font-size:.8rem;letter-spacing:1px;
     color:var(--gold);font-weight:700;text-transform:uppercase;
   }
+  .team-btn {
+    display: block;
+    margin-top: 15px;
+    padding: 10px;
+    background: var(--navy);
+    color: var(--white);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .team-btn:hover {
+    background: var(--crimson);
+  }
 
-  /* REGISTER */
-  .register{
+  /* UNLOCK SECTION (Formerly Register) */
+  .unlock-section{
     background:linear-gradient(135deg,var(--navy),var(--crimson-2));
     text-align:center;border-top:3px solid var(--gold);
     border-bottom:3px solid var(--gold);
   }
-  .register .section-title,
-  .register .section-sub{color:var(--white);}
-  .register .section-sub{color:#e0e8f0;margin-left:auto;margin-right:auto;}
+  .unlock-section .section-title,
+  .unlock-section .section-sub{color:var(--white);}
+  .unlock-section .section-sub{color:#e0e8f0;margin-left:auto;margin-right:auto;}
   .info-grid{
     display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:24px;margin:48px 0;text-align:left;
@@ -256,27 +294,6 @@
   }
   .info-box p{color:#e8f0ea;font-size:.95rem;}
 
-  /* CONTACT */
-  .contact-grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-    gap:24px;
-  }
-  .contact-card{
-    background:var(--dark-2);
-    border:2px solid #222;border-radius:10px;
-    padding:32px 24px;text-align:center;
-    transition:border-color .2s;
-  }
-  .contact-card:hover{border-color:var(--gold);}
-  .contact-card .icon{
-    font-size:2.2rem;margin-bottom:14px;
-  }
-  .contact-card h4{
-    font-size:.85rem;letter-spacing:2px;text-transform:uppercase;
-    color:var(--gold);margin-bottom:8px;
-  }
-  .contact-card p{color:var(--gray);font-size:.95rem;}
-
   /* FOOTER */
   footer{
     background:#050505;padding:40px 20px;text-align:center;
@@ -290,6 +307,14 @@
   footer .foot-tag{
     color:var(--crimson);font-weight:700;font-size:.8rem;
     letter-spacing:2px;text-transform:uppercase;margin-bottom:14px;
+  }
+  .disclaimer {
+    font-size: 0.7rem;
+    color: #666;
+    margin-top: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
   }
 
   /* MOBILE */
@@ -305,6 +330,7 @@
     .cd-box{min-width:80px;padding:14px 16px;}
     .cd-num{font-size:1.8rem;}
     .schedule-table th,.schedule-table td{padding:12px 10px;font-size:.85rem;}
+    .schedule-table th:nth-child(3), .schedule-table td:nth-child(3) { display: none; } /* Sembunyikan kolom matchup di HP jika terlalu lebar */
     section{padding:60px 0;}
   }
 </style>
@@ -319,8 +345,7 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="#schedule">Schedule</a></li>
       <li><a href="#teams">Teams</a></li>
-      <li><a href="#register">Register</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#watch">Watch Live</a></li>
     </ul>
   </div>
 </nav>
@@ -331,7 +356,7 @@
     <div class="trophy-icon">🏆</div>
     <div class="badge">2026 Season</div>
     <h1>Varsity <span class="gold">Bowl</span><br/>National High School Football Championship</h1>
-    <p class="sub">Earn Your Stripes. Claim the Crown.</p>
+    <p class="sub">Watch Live in HD. Complete 1 Step to Unlock Stream.</p>
 
     <div class="hero-info">
       <div>
@@ -343,12 +368,13 @@
         <div class="value">Memorial Stadium</div>
       </div>
       <div>
-        <div class="label">Teams</div>
-        <div class="value">16 Varsity Squads</div>
+        <div class="label">Stream</div>
+        <div class="value">1080p HD</div>
       </div>
     </div>
 
-    <a href="#register" class="btn btn-crimson">Register Your Team</a>
+    <!-- GANTI LINK INI DENGAN LINK VIDEO LOCKER CPA GRIP ANDA -->
+    <a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="btn btn-crimson pulse-btn">🔴 WATCH LIVE NOW</a>
   </div>
 </header>
 
@@ -367,8 +393,8 @@
 <section id="schedule">
   <div class="container">
     <div class="section-head">
-      <h2 class="section-title">Game <span class="gold">Schedule</span></h2>
-      <p class="section-sub">Full tournament bracket. All games played under the lights.</p>
+      <h2 class="section-title">Live Stream <span class="gold">Schedule</span></h2>
+      <p class="section-sub">Full tournament bracket. Click watch to access the stream (verification required).</p>
     </div>
 
     <table class="schedule-table">
@@ -377,7 +403,7 @@
           <th>Date</th>
           <th>Time</th>
           <th>Matchup</th>
-          <th>Round</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -385,31 +411,36 @@
           <td>Oct 10, 2026</td>
           <td>7:00 PM</td>
           <td>Northside Eagles vs. Central Titans</td>
-          <td><span class="round-tag">Round 1</span></td>
+          <!-- GANTI LINK INI DENGAN LINK VIDEO LOCKER CPA GRIP ANDA -->
+          <td><a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="watch-link">Watch</a></td>
         </tr>
         <tr>
           <td>Oct 10, 2026</td>
           <td>9:30 PM</td>
           <td>Westlake Wolves vs. East Ridge Bears</td>
-          <td><span class="round-tag">Round 1</span></td>
+          <!-- GANTI LINK INI DENGAN LINK VIDEO LOCKER CPA GRIP ANDA -->
+          <td><a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="watch-link">Watch</a></td>
         </tr>
         <tr>
           <td>Oct 11, 2026</td>
           <td>7:00 PM</td>
           <td>Southside Storm vs. Riverside Raiders</td>
-          <td><span class="round-tag">Quarterfinal</span></td>
+          <!-- GANTI LINK INI DENGAN LINK VIDEO LOCKER CPA GRIP ANDA -->
+          <td><a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="watch-link">Watch</a></td>
         </tr>
         <tr>
           <td>Oct 12, 2026</td>
           <td>8:00 PM</td>
           <td>Winner QF1 vs. Winner QF2</td>
-          <td><span class="round-tag">Semifinal</span></td>
+          <!-- GANTI LINK INI DENGAN LINK VIDEO LOCKER CPA GRIP ANDA -->
+          <td><a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="watch-link">Watch</a></td>
         </tr>
         <tr>
           <td>Oct 15, 2026</td>
           <td>8:00 PM</td>
-          <td>TBD vs. TBD</td>
-          <td><span class="round-tag final">Championship</span></td>
+          <td>TBD vs. TBD (Championship)</td>
+          <!-- GANTI LINK INI DENGAN LINK VIDEO LOCKER CPA GRIP ANDA -->
+          <td><a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="watch-link">Watch</a></td>
         </tr>
       </tbody>
     </table>
@@ -430,112 +461,89 @@
         <h4>Northside Eagles</h4>
         <p class="school">Northside High School</p>
         <p class="record">8–1 · Conference Champs</p>
+        <!-- GANTI LINK INI DENGAN LINK VIDEO LOCKER CPA GRIP ANDA -->
+        <a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="team-btn">Watch Highlights</a>
       </div>
       <div class="team-card">
         <div class="team-logo">CT</div>
         <h4>Central Titans</h4>
         <p class="school">Central High School</p>
         <p class="record">7–2 · Wild Card</p>
+        <a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="team-btn">Watch Highlights</a>
       </div>
       <div class="team-card">
         <div class="team-logo">WW</div>
         <h4>Westlake Wolves</h4>
         <p class="school">Westlake High School</p>
         <p class="record">9–0 · Undefeated</p>
+        <a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="team-btn">Watch Highlights</a>
       </div>
       <div class="team-card">
         <div class="team-logo">ER</div>
         <h4>East Ridge Bears</h4>
         <p class="school">East Ridge High School</p>
         <p class="record">6–3 · Wild Card</p>
+        <a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="team-btn">Watch Highlights</a>
       </div>
       <div class="team-card">
         <div class="team-logo">SS</div>
         <h4>Southside Storm</h4>
         <p class="school">Southside High School</p>
         <p class="record">8–1 · Division Champs</p>
+        <a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="team-btn">Watch Highlights</a>
       </div>
       <div class="team-card">
         <div class="team-logo">RR</div>
         <h4>Riverside Raiders</h4>
         <p class="school">Riverside High School</p>
         <p class="record">7–2 · Wild Card</p>
+        <a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="team-btn">Watch Highlights</a>
       </div>
       <div class="team-card">
         <div class="team-logo">NH</div>
         <h4>North Hills Hawks</h4>
         <p class="school">North Hills High School</p>
         <p class="record">6–3 · Wild Card</p>
+        <a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="team-btn">Watch Highlights</a>
       </div>
       <div class="team-card">
         <div class="team-logo">SP</div>
         <h4>Summit Prep Panthers</h4>
         <p class="school">Summit Prep Academy</p>
         <p class="record">9–0 · Undefeated</p>
+        <a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="team-btn">Watch Highlights</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- REGISTER -->
-<section id="register" class="register">
+<!-- UNLOCK STREAM SECTION (Formerly Register) -->
+<section id="watch" class="unlock-section">
   <div class="container">
-    <h2 class="section-title">Register <span class="gold">Your Team</span></h2>
-    <p class="section-sub">Team registration closes September 15, 2026. Limited to 16 varsity squads.</p>
+    <h2 class="section-title">Unlock <span class="gold">Live Stream</span></h2>
+    <p class="section-sub">To prevent server overload, we require a 1-step verification to access the 1080p High School Championship stream.</p>
 
     <div class="info-grid">
       <div class="info-box">
-        <h4>Entry Fee</h4>
-        <p>$250 per team (covers referees, field, and awards)</p>
+        <h4>Step 1</h4>
+        <p>Click the "Unlock Stream" button below</p>
       </div>
       <div class="info-box">
-        <h4>Eligibility</h4>
-        <p>High school varsity teams, grades 9–12, ages 14–18</p>
+        <h4>Step 2</h4>
+        <p>Complete 1 quick offer (app install or survey)</p>
       </div>
       <div class="info-box">
-        <h4>Deadline</h4>
-        <p>September 15, 2026 — 11:59 PM EST</p>
+        <h4>Step 3</h4>
+        <p>You will be redirected immediately to the stream</p>
       </div>
       <div class="info-box">
-        <h4>Includes</h4>
-        <p>Full tournament, jersey patches, trophy, and highlight reel</p>
+        <h4>Requirements</h4>
+        <p>Mobile device or PC with internet connection</p>
       </div>
     </div>
 
-    <a href="https://forms.gle/xxxx" target="_blank" class="btn">Open Registration Form</a>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="container">
-    <div class="section-head">
-      <h2 class="section-title">Get in <span class="gold">Touch</span></h2>
-      <p class="section-sub">Questions about the Varsity Bowl? Our team responds within 24 hours.</p>
-    </div>
-
-    <div class="contact-grid">
-      <div class="contact-card">
-        <div class="icon">📧</div>
-        <h4>Email</h4>
-        <p>info@varsitybowl.com</p>
-      </div>
-      <div class="contact-card">
-        <div class="icon">📞</div>
-        <h4>Phone</h4>
-        <p>+1 (555) 123-4567</p>
-      </div>
-      <div class="contact-card">
-        <div class="icon">📍</div>
-        <h4>Venue</h4>
-        <p>Memorial Stadium<br/>1234 Stadium Dr, USA</p>
-      </div>
-      <div class="contact-card">
-        <div class="icon">📱</div>
-        <h4>Social</h4>
-        <p>@VarsityBowl</p>
-      </div>
-    </div>
+    <!-- GANTI LINK INI DENGAN LINK VIDEO LOCKER CPA GRIP ANDA -->
+    <a href="YOUR_CPA_GRIP_LINK_HERE" target="_blank" class="btn pulse-btn" style="background:var(--crimson); color:var(--white); border-color:var(--crimson);">🔓 UNLOCK LIVE STREAM</a>
   </div>
 </section>
 
@@ -544,6 +552,9 @@
   <div class="foot-logo">🏆 Varsity Bowl 2026</div>
   <div class="foot-tag">Earn Your Stripes. Claim the Crown.</div>
   <p>© 2026 Varsity Bowl Championship. All rights reserved.</p>
+  <div class="disclaimer">
+    Disclaimer: This is a promotional fan page. We are not affiliated with the NFL, NCAA, or any official high school athletic association. All trademarks belong to their respective owners.
+  </div>
 </footer>
 
 <script>
