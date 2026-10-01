@@ -206,21 +206,21 @@
     100%{box-shadow:0 8px 30px rgba(200,16,46,.6), 0 0 0 0 rgba(200,16,46,0);}
   }
 
-  /* FAKE PLAYER CONTROLS */
+  /* FAKE PLAYER CONTROLS (DIPERKECIL) */
   .player-controls{
     position:absolute;
     bottom:0;left:0;right:0;
     background:linear-gradient(transparent,rgba(0,0,0,.95));
-    padding:12px 14px 10px;
+    padding:8px 10px 6px; /* Padding diperkecil */
     z-index:6;
     pointer-events:none;
   }
   .progress-bar{
-    width:100%;height:5px;
+    width:100%;height:4px; /* Ketebalan progress bar dikurangi */
     background:rgba(255,255,255,.25);
     border-radius:3px;
     overflow:hidden;
-    margin-bottom:10px;
+    margin-bottom:6px; /* Jarak ke ikon dikurangi */
     position:relative;
   }
   .progress-fill{
@@ -232,9 +232,9 @@
   }
   .progress-fill::after{
     content:"";
-    position:absolute;right:-6px;top:50%;
+    position:absolute;right:-5px;top:50%;
     transform:translateY(-50%);
-    width:12px;height:12px;
+    width:10px;height:10px; /* Titik merah diperkecil */
     background:var(--crimson);
     border-radius:50%;
     border:2px solid #fff;
@@ -244,15 +244,15 @@
     align-items:center;
     justify-content:space-between;
     color:#fff;
-    font-size:.8rem;
+    font-size:.7rem; /* Font diperkecil */
   }
   .controls-left{
     display:flex;
     align-items:center;
-    gap:14px;
+    gap:10px; /* Jarak antar ikon dirapatkan */
   }
   .ctrl-icon{
-    width:18px;height:18px;
+    width:14px;height:14px; /* Ikon diperkecil */
     fill:#fff;
     opacity:.85;
   }
@@ -515,10 +515,14 @@
     .steps{grid-template-columns:1fr;}
     .step{display:flex;align-items:center;gap:12px;text-align:left;padding:14px;}
     .step .num{margin:0;flex-shrink:0;}
-    .controls-row{font-size:.72rem;}
-    .ctrl-icon{width:15px;height:15px;}
+    /* Penyesuaian khusus kontrol player di HP */
+    .controls-row{font-size:.65rem;} 
+    .ctrl-icon{width:13px;height:13px;} 
+    .player-controls{padding: 6px 8px 4px;}
+    .progress-bar{height:3px; margin-bottom:4px;}
+    .progress-fill::after{width:8px;height:8px; right:-4px;}
+    .controls-left{gap:8px;}
     .cta-btn{font-size:.9rem;padding:16px 18px;}
-    .player-controls{padding: 12px 10px 8px;}
   }
 </style>
 </head>
@@ -572,7 +576,7 @@
           <span id="timeDisplay">42:18 / 48:00</span>
         </div>
         <div class="controls-left">
-          <span style="color:#ff0033;font-weight:900;font-size:.7rem;">● LIVE</span>
+          <span style="color:#ff0033;font-weight:900;font-size:.65rem;">● LIVE</span>
           <svg class="ctrl-icon" viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
         </div>
       </div>
@@ -588,7 +592,6 @@
 
 <!-- CHAT -->
 <div class="chat-box">
-  <!-- ID chatBox ditambahkan untuk JS -->
   <div class="chat-inner" id="chatBox">
     <h4>Live Chat</h4>
     <!-- Pesan awal -->
@@ -727,7 +730,6 @@
   // ========================================
   var chatBox = document.getElementById('chatBox');
   
-  // Daftar user dan pesan acak
   var users = [
     'EagleEye_22', 'TitanUp99', 'GridironGuru', 'JennyFromLA', 
     'CoachK', 'SportsFanatic', 'DefenseWins', 'QB1_Mom', 
@@ -744,38 +746,29 @@
   ];
 
   function addChatMessage() {
-    // Pilih user dan pesan acak
     var randomUser = users[Math.floor(Math.random() * users.length)];
     var randomMsg = messages[Math.floor(Math.random() * messages.length)];
     
-    // Buat elemen div baru
     var msgDiv = document.createElement('div');
     msgDiv.className = 'chat-msg';
     
-    // Format jam
     var now = new Date();
     var timeString = now.getHours().toString().padStart(2, '0') + ':' + now.getMinutes().toString().padStart(2, '0');
     
     msgDiv.innerHTML = `<b>${randomUser}:</b> ${randomMsg} <span class="time">${timeString}</span>`;
     
-    // Tambahkan ke chat box
     chatBox.appendChild(msgDiv);
     
-    // Batasi jumlah pesan (misal maksimal 15 pesan agar tidak berat)
     if (chatBox.children.length > 15) {
-      // Hapus pesan paling atas (index 0 adalah header, jadi hapus index 1)
       chatBox.removeChild(chatBox.children[1]);
     }
     
-    // Auto-scroll ke bawah
     chatBox.scrollTop = chatBox.scrollHeight;
     
-    // Panggil fungsi ini lagi setelah waktu acak (antara 3 sampai 8 detik)
     var nextInterval = Math.random() * 5000 + 3000;
     setTimeout(addChatMessage, nextInterval);
   }
 
-  // Mulai live chat setelah 2 detik pertama
   setTimeout(addChatMessage, 2000);
 </script>
 </body>
