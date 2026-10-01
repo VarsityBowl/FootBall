@@ -9,7 +9,7 @@
 <!-- FAVICON -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a1f44'/%3E%3Crect x='4' y='4' width='92' height='92' rx='16' fill='none' stroke='%23c8102e' stroke-width='3'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle'%3E%F0%9F%8F%86%3C/text%3E%3C/svg%3E" />
 
-<!-- OPEN GRAPH / SOCIAL MEDIA PREVIEW -->
+<!-- SOCIAL MEDIA PREVIEW -->
 <meta property="og:type" content="website" />
 <meta property="og:title" content="🔴 LIVE — Varsity Bowl Championship Stream HD" />
 <meta property="og:description" content="Watch the National High School Football Championship Live in Full HD 1080p." />
@@ -18,7 +18,6 @@
 <meta property="og:image:width" content="1731" />
 <meta property="og:image:height" content="909" />
 <meta property="og:image:type" content="image/jpeg" />
-<meta property="og:image:alt" content="Varsity Bowl 2026 Live Stream" />
 <meta property="og:site_name" content="Varsity Bowl" />
 <meta property="og:url" content="https://varsitybowl.github.io/FootBall/" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -152,16 +151,128 @@
     content:"";position:absolute;inset:0;
     background:repeating-linear-gradient(-45deg,rgba(255,255,255,.02) 0 20px,transparent 20px 40px);
   }
-  .poster-text{position:relative;z-index:2;text-align:center;padding:16px;}
-  .poster-text .champ{
-    font-size:clamp(1.2rem,4vw,1.8rem);font-weight:900;
-    text-transform:uppercase;letter-spacing:1px;margin-bottom:6px;
-    text-shadow:0 2px 20px rgba(0,0,0,.8);
+  
+  /* COUNTDOWN OVERLAY */
+  .countdown-overlay{
+    position:relative;
+    z-index:3;
+    text-align:center;
+    padding:16px;
+    width:100%;
   }
-  .poster-text .sub{
-    font-size:.8rem;color:var(--gold);letter-spacing:2px;
-    text-transform:uppercase;font-weight:700;
+  .countdown-overlay .cd-label-top{
+    font-size:.7rem;
+    letter-spacing:3px;
+    color:var(--gold);
+    font-weight:900;
+    text-transform:uppercase;
+    margin-bottom:12px;
+    text-shadow:0 2px 10px rgba(0,0,0,.8);
   }
+  .countdown-overlay .cd-teams{
+    font-size:clamp(.95rem,3.5vw,1.4rem);
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:16px;
+    text-shadow:0 2px 15px rgba(0,0,0,.9);
+  }
+  .countdown-overlay .cd-teams .vs-mini{
+    color:var(--crimson);
+    margin:0 8px;
+    font-size:.85em;
+  }
+  .countdown-grid{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:14px;
+  }
+  .cd-box{
+    background:rgba(10,31,68,.85);
+    border:2px solid var(--gold);
+    border-radius:10px;
+    padding:10px 12px;
+    min-width:68px;
+    backdrop-filter:blur(6px);
+    box-shadow:0 8px 25px rgba(0,0,0,.5);
+    position:relative;
+  }
+  .cd-box::after{
+    content:"";position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--crimson),var(--gold),var(--crimson));
+    border-radius:10px 10px 0 0;
+  }
+  .cd-num{
+    font-size:clamp(1.3rem,4.5vw,1.9rem);
+    font-weight:900;
+    color:var(--gold);
+    line-height:1;
+    font-variant-numeric:tabular-nums;
+    text-shadow:0 2px 10px rgba(245,197,24,.4);
+  }
+  .cd-label{
+    font-size:.6rem;
+    letter-spacing:1.5px;
+    color:#fff;
+    text-transform:uppercase;
+    margin-top:5px;
+    font-weight:700;
+    opacity:.9;
+  }
+  .countdown-overlay .kickoff-time{
+    font-size:.75rem;
+    color:#fff;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    opacity:.85;
+    text-shadow:0 2px 10px rgba(0,0,0,.8);
+  }
+  .countdown-overlay .kickoff-time strong{color:var(--gold);}
+
+  /* LIVE MODE (after countdown ends) */
+  .live-mode{
+    display:none;
+    text-align:center;
+    z-index:3;
+    position:relative;
+  }
+  .live-mode.active{display:block;}
+  .live-mode .live-badge-big{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:var(--live);
+    color:#fff;
+    font-size:.8rem;
+    font-weight:900;
+    padding:8px 18px;
+    border-radius:20px;
+    letter-spacing:2px;
+    margin-bottom:14px;
+    animation:liveBlink 1.2s infinite;
+    box-shadow:0 0 30px rgba(255,0,51,.6);
+  }
+  .live-mode .live-badge-big .live-dot{
+    width:8px;height:8px;
+  }
+  .live-mode h2{
+    font-size:clamp(1.1rem,4vw,1.6rem);
+    font-weight:900;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    text-shadow:0 2px 15px rgba(0,0,0,.9);
+    margin-bottom:8px;
+  }
+  .live-mode p{
+    font-size:.85rem;
+    color:var(--gray);
+    letter-spacing:1px;
+  }
+
+  /* Hide countdown when live */
+  .countdown-overlay.hidden{display:none;}
 
   /* PLAY BUTTON */
   .play-btn{
@@ -313,6 +424,12 @@
     background:#050505;padding:24px 16px;text-align:center;
     border-top:1px solid #1a1a1a;font-size:.72rem;color:#555;line-height:1.6;
   }
+  footer .footer-links{
+    display:flex;gap:16px;justify-content:center;flex-wrap:wrap;
+    margin-bottom:14px;font-size:.75rem;
+  }
+  footer .footer-links a{color:#777;}
+  footer .footer-links a:hover{color:var(--gold);}
 
   /* MOBILE */
   @media(max-width:768px){
@@ -328,8 +445,8 @@
     .steps{grid-template-columns:1fr;}
     .step{display:flex;align-items:center;gap:12px;text-align:left;padding:14px;}
     .step .num{margin:0;flex-shrink:0;}
-    .play-btn{width:65px;height:65px;border-width:2px;}
-    .play-btn svg{width:24px;height:24px;}
+    .play-btn{width:60px;height:60px;border-width:2px;}
+    .play-btn svg{width:22px;height:22px;}
     .controls-row{font-size:.6rem;}
     .ctrl-icon{width:11px;height:11px;}
     .player-controls{padding:4px 6px 2px;}
@@ -339,6 +456,16 @@
     .cta-btn{font-size:.9rem;padding:16px 18px;}
     .logo{font-size:1rem;}
     .live-pill{font-size:.6rem;padding:4px 8px;}
+    
+    /* Countdown mobile */
+    .countdown-overlay{padding:12px 8px;}
+    .countdown-overlay .cd-label-top{font-size:.6rem;letter-spacing:2px;margin-bottom:8px;}
+    .countdown-overlay .cd-teams{font-size:.85rem;margin-bottom:12px;}
+    .countdown-grid{gap:5px;margin-bottom:10px;}
+    .cd-box{min-width:56px;padding:8px 8px;border-radius:8px;}
+    .cd-num{font-size:1.2rem;}
+    .cd-label{font-size:.5rem;letter-spacing:1px;margin-top:3px;}
+    .countdown-overlay .kickoff-time{font-size:.65rem;}
   }
 </style>
 </head>
@@ -357,39 +484,73 @@
     <ul class="nav-links" id="navLinks">
       <li><a href="teams.html">📅 Schedule & Teams</a></li>
       <li><a href="#watch">🔴 Watch Live</a></li>
+      <li><a href="privacy.html">Privacy</a></li>
     </ul>
   </div>
 </nav>
 
 <!-- MATCH HEADER -->
 <div class="match-header">
-  <div class="league">National Championship · Final</div>
+  <div class="league">6A State Championship · Battle of the Unbeatens</div>
   <div class="matchup">
-    <div class="team-name">Northside Eagles</div>
+    <div class="team-name">Rigby Trojans</div>
     <div class="vs">VS</div>
-    <div class="team-name">Central Titans</div>
+    <div class="team-name">Coeur d'Alene Vikings</div>
   </div>
   <div class="match-meta">
-    <span>📍 Memorial Stadium</span>
-    <span>🕐 8:00 PM EST</span>
-    <span>🏈 4th Quarter</span>
+    <span>📍 Viking Field</span>
+    <span>🕐 7:00 PM PT</span>
+    <span>🏈 Week 7</span>
   </div>
 </div>
 
-<!-- VIDEO PLAYER -->
+<!-- VIDEO PLAYER WITH COUNTDOWN -->
 <div class="player-wrap">
   <div class="video-player" id="videoPlayer">
     <div class="poster">
-      <div class="poster-text">
-        <div class="champ">Varsity Bowl 2026</div>
-        <div class="sub">Championship Stream · 1080p HD</div>
+      
+      <!-- COUNTDOWN OVERLAY -->
+      <div class="countdown-overlay" id="countdownOverlay">
+        <div class="cd-label-top">⏰ Kickoff Countdown</div>
+        <div class="cd-teams">
+          Rigby <span class="vs-mini">VS</span> Coeur d'Alene
+        </div>
+        <div class="countdown-grid">
+          <div class="cd-box">
+            <div class="cd-num" id="cdDays">00</div>
+            <div class="cd-label">Days</div>
+          </div>
+          <div class="cd-box">
+            <div class="cd-num" id="cdHours">00</div>
+            <div class="cd-label">Hours</div>
+          </div>
+          <div class="cd-box">
+            <div class="cd-num" id="cdMinutes">00</div>
+            <div class="cd-label">Minutes</div>
+          </div>
+          <div class="cd-box">
+            <div class="cd-num" id="cdSeconds">00</div>
+            <div class="cd-label">Seconds</div>
+          </div>
+        </div>
+        <div class="kickoff-time">Kickoff: <strong>Tonight, 7:00 PM PT</strong></div>
       </div>
+
+      <!-- LIVE MODE (Muncul saat countdown habis) -->
+      <div class="live-mode" id="liveMode">
+        <div class="live-badge-big"><span class="live-dot"></span>LIVE NOW</div>
+        <h2>Rigby vs Coeur d'Alene</h2>
+        <p>Streaming live in HD · Tap play to watch</p>
+      </div>
+
     </div>
 
+    <!-- PLAY BUTTON -->
     <div class="play-btn" id="playBtn">
       <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
     </div>
 
+    <!-- FAKE CONTROLS -->
     <div class="player-controls">
       <div class="progress-bar">
         <div class="progress-fill"></div>
@@ -398,7 +559,7 @@
         <div class="controls-left">
           <svg class="ctrl-icon" viewBox="0 0 24 24"><path d="M6 4h4v16H6zM14 4h4v16h-4z"/></svg>
           <svg class="ctrl-icon" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
-          <span id="timeDisplay">42:18 / 48:00</span>
+          <span id="timeDisplay">0:00 / 48:00</span>
         </div>
         <div class="controls-left">
           <span style="color:#ff0033;font-weight:900;font-size:.6rem;">● LIVE</span>
@@ -408,28 +569,29 @@
     </div>
   </div>
 
+  <!-- VIEWER COUNT -->
   <div class="viewer-bar">
     <span class="live-dot"></span>
-    <span><b id="viewerCount">12,847</b> watching now</span>
+    <span><b id="viewerCount">3,247</b> waiting for kickoff</span>
   </div>
 </div>
 
 <!-- CHAT -->
 <div class="chat-box">
   <div class="chat-inner" id="chatBox">
-    <h4>Live Chat</h4>
-    <div class="chat-msg"><b>Mike_88:</b> Let's go Eagles! 🦅<span class="time">just now</span></div>
-    <div class="chat-msg"><b>SarahJ:</b> That touchdown was insane 🔥<span class="time">just now</span></div>
-    <div class="chat-msg"><b>CoachD:</b> Defense needs to step up<span class="time">just now</span></div>
-    <div class="chat-msg"><b>FootballFan23:</b> Stream quality is great!<span class="time">just now</span></div>
-    <div class="chat-msg"><b>Tommy_R:</b> Anyone else having buffering issues?<span class="time">just now</span></div>
+    <h4>Pre-Game Chat</h4>
+    <div class="chat-msg"><b>VikingFan_ID:</b> Let's go Vikings! 💙<span class="time">just now</span></div>
+    <div class="chat-msg"><b>TrojansNation:</b> Rigby all the way 🏈<span class="time">just now</span></div>
+    <div class="chat-msg"><b>CoachMike:</b> Battle of the unbeatens!<span class="time">just now</span></div>
+    <div class="chat-msg"><b>HSFB_Fanatic:</b> Can't wait for kickoff 🔥<span class="time">just now</span></div>
+    <div class="chat-msg"><b>IdahoSportsFan:</b> Game of the year in 6A!<span class="time">just now</span></div>
   </div>
 </div>
 
 <!-- CTA -->
 <div class="cta-section" id="watch">
-  <h3>Stream Buffering? <span>Switch to HD Server</span></h3>
-  <p>For the best quality and zero lag, switch to our high-speed HD server.</p>
+  <h3>Ready to Watch? <span>Verify to Unlock HD Stream</span></h3>
+  <p>Complete a quick 1-step verification to access the live stream in Full HD.</p>
   <button class="cta-btn" id="ctaBtn">📺 Watch in Full HD</button>
   <div class="cta-sub">Free · No signup required · 1-step verify</div>
 </div>
@@ -466,12 +628,17 @@
 
 <!-- FOOTER -->
 <footer>
+  <div class="footer-links">
+    <a href="index.html">Home</a>
+    <a href="teams.html">Teams & Schedule</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
   <p>© 2026 Varsity Bowl Stream. This is a fan stream page and is not affiliated with any official league or athletic association.</p>
   <p style="margin-top:8px;">All trademarks belong to their respective owners.</p>
 </footer>
 
 <script>
-  // Mobile menu
+  // ===== Mobile menu =====
   const toggle = document.getElementById('menuToggle');
   const links = document.getElementById('navLinks');
   toggle.addEventListener('click', () => links.classList.toggle('open'));
@@ -479,7 +646,7 @@
     a.addEventListener('click', () => links.classList.remove('open'))
   );
 
-  // Modal
+  // ===== Modal =====
   var modal = document.getElementById('modal');
   var playBtn = document.getElementById('playBtn');
   var ctaBtn = document.getElementById('ctaBtn');
@@ -496,42 +663,108 @@
     if(e.target === modal) modal.classList.remove('active');
   });
 
-  // Fake viewer count
-  var viewerEl = document.getElementById('viewerCount');
-  var baseViewers = 12847;
-  setInterval(function(){
-    var change = Math.floor(Math.random() * 40) - 15;
-    baseViewers += change;
-    if(baseViewers < 12000) baseViewers = 12000;
-    viewerEl.textContent = baseViewers.toLocaleString();
-  }, 2500);
+  // ====================================================
+  // COUNTDOWN TIMER — Rigby vs Coeur d'Alene
+  // ====================================================
+  // Ganti tanggal & jam kickoff sesuai kebutuhan
+  // Format: 'YYYY-MM-DDTHH:MM:SS-07:00' (zona waktu Pacific = -07:00 untuk PDT)
+  // Contoh: '2026-10-01T19:00:00-07:00' = 1 Oktober 2026, 7:00 PM Pacific
+  // ====================================================
+  var kickoffTime = new Date('2026-10-01T19:00:00-07:00').getTime();
 
-  // Fake time
+  var cdDays = document.getElementById('cdDays');
+  var cdHours = document.getElementById('cdHours');
+  var cdMinutes = document.getElementById('cdMinutes');
+  var cdSeconds = document.getElementById('cdSeconds');
+  var countdownOverlay = document.getElementById('countdownOverlay');
+  var liveMode = document.getElementById('liveMode');
+  var viewerBarText = document.querySelector('.viewer-bar span:last-child');
+
+  function updateCountdown(){
+    var now = Date.now();
+    var diff = kickoffTime - now;
+
+    if(diff <= 0){
+      // Kickoff sudah lewat — switch ke LIVE mode
+      countdownOverlay.classList.add('hidden');
+      liveMode.classList.add('active');
+      if(viewerBarText){
+        viewerBarText.innerHTML = '<b id="viewerCount">' + (Math.floor(Math.random()*5000)+12000).toLocaleString() + '</b> watching now';
+      }
+      return;
+    }
+
+    var days = Math.floor(diff / 86400000);
+    var hours = Math.floor((diff % 86400000) / 3600000);
+    var minutes = Math.floor((diff % 3600000) / 60000);
+    var seconds = Math.floor((diff % 60000) / 1000);
+
+    cdDays.textContent = String(days).padStart(2, '0');
+    cdHours.textContent = String(hours).padStart(2, '0');
+    cdMinutes.textContent = String(minutes).padStart(2, '0');
+    cdSeconds.textContent = String(seconds).padStart(2, '0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ===== Fake viewer count (waiting for kickoff) =====
+  var viewerEl = document.getElementById('viewerCount');
+  var baseViewers = 3247;
+  setInterval(function(){
+    if(!viewerEl) return;
+    var change = Math.floor(Math.random() * 30) - 10;
+    baseViewers += change;
+    if(baseViewers < 3000) baseViewers = 3000;
+    viewerEl.textContent = baseViewers.toLocaleString();
+  }, 3000);
+
+  // ===== Fake time display =====
   var timeEl = document.getElementById('timeDisplay');
-  var secs = 42 * 60 + 18;
+  var secs = 0;
   setInterval(function(){
     secs++;
-    if(secs > 48 * 60) secs = 42 * 60;
+    if(secs > 48 * 60) secs = 0;
     var m = Math.floor(secs / 60);
     var s = secs % 60;
     timeEl.textContent = String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0') + ' / 48:00';
   }, 1000);
 
-  // Progress bar
+  // ===== Progress bar =====
   var progressFill = document.querySelector('.progress-fill');
-  var progress = 15;
+  var progress = 5;
   setInterval(function(){
-    progress += Math.random() * 0.8;
-    if(progress > 95) progress = 15;
+    progress += Math.random() * 0.5;
+    if(progress > 95) progress = 5;
     progressFill.style.width = progress + '%';
   }, 2000);
 
-  // LIVE CHAT
+  // ===== LIVE CHAT =====
   var chatBox = document.getElementById('chatBox');
-  var users = ['EagleEye_22','TitanUp99','GridironGuru','JennyFromLA','CoachK','SportsFanatic','DefenseWins','QB1_Mom','FootballFreak','PrimetimePlayer','TailgateKing','MVP_Mike'];
-  var messages = ["Let's go!!! 🔥","What a play!","Defense is solid today","Anyone else buffering?","This QB is insane 🤯","TOUCHDOWN!!! 🏈","Refs are blind man","Best game this season","Stream is smooth now","Who's winning?","Just tuned in, what did I miss?","That catch was crazy","OMG WHAT A CATCH","Kick the field goal!","This is going to OT","Eagles all the way! 🦅","Titans need a miracle","Best stream quality so far"];
+  var users = ['VikingFan_ID','TrojansNation','CoachMike','HSFB_Fanatic','IdahoSportsFan','Rigby_Alum','CdA_Vikings','GridironGuru','BigSkyFan','6A_Insider','FridayNightFan','FootballFreak'];
+  var messages = [
+    "Let's go!!! 🔥",
+    "Battle of the unbeatens 🏈",
+    "Rigby all the way! 💪",
+    "Vikings defense looking solid",
+    "This is gonna be epic",
+    "Idaho 6A football at its best",
+    "Can't wait for kickoff!",
+    "Who's winning tonight?",
+    "Stream is gonna be 🔥",
+    "Rigby 28-21 my prediction",
+    "Coeur d'Alene takes it 🏆",
+    "Best game of the season!",
+    "Just tuned in, when's kickoff?",
+    "My money's on the Trojans",
+    "Vikings Nation! 💙",
+    "Trojans gonna run it back 🏆",
+    "Go Rigby! 🏈",
+    "This is the game of the year"
+  ];
 
   function addChatMessage() {
+    if(!chatBox) return;
     var randomUser = users[Math.floor(Math.random() * users.length)];
     var randomMsg = messages[Math.floor(Math.random() * messages.length)];
     var msgDiv = document.createElement('div');
