@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<title>Privacy Policy — Varsity Bowl</title>
+<meta name="description" content="Privacy Policy for Varsity Bowl — Learn how we collect, use, and protect your information." />
+
+<!-- FAVICON -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a1f44'/%3E%3Crect x='4' y='4' width='92' height='92' rx='16' fill='none' stroke='%23c8102e' stroke-width='3'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle'%3E%F0%9F%8F%86%3C/text%3E%3C/svg%3E" />
+
+<style>
+  :root{
+    --navy:#0a1f44; --navy-2:#0d2a5c; --crimson:#c8102e; --crimson-2:#a00d24;
+    --gold:#f5c518; --dark:#0a0a0a; --dark-2:#141414;
+    --white:#fff; --gray:#b8b8b8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
+  html,body{overflow-x:hidden;}
+  body{
+    font-family:'Helvetica Neue',Arial,sans-serif;
+    background:var(--dark); color:var(--white); line-height:1.7; min-height:100vh;
+  }
+  a{color:var(--gold); text-decoration:underline;}
+  a:hover{color:var(--white);}
+
+  /* TOP BAR */
+  .topbar{
+    background:#000; padding:12px 16px; display:flex; align-items:center;
+    justify-content:space-between; border-bottom:2px solid var(--crimson);
+    position:sticky; top:0; z-index:50;
+  }
+  .topbar .brand{
+    font-weight:900; font-size:.95rem; letter-spacing:1px; color:var(--gold);
+    text-transform:uppercase; display:flex; align-items:center; gap:8px;
+  }
+  .topbar .back{
+    font-size:.75rem; font-weight:700; color:var(--gray); letter-spacing:1px;
+    text-transform:uppercase; border:1px solid #333; padding:6px 12px; border-radius:6px;
+    transition:all .2s; text-decoration:none;
+  }
+  .topbar .back:hover{color:var(--gold); border-color:var(--gold);}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(135deg,var(--navy),var(--navy-2));
+    padding:44px 16px 32px; text-align:center; border-bottom:1px solid #1a1a1a;
+  }
+  .hero .badge{
+    display:inline-block; background:var(--crimson); color:#fff;
+    font-weight:900; font-size:.7rem; letter-spacing:3px; padding:6px 14px;
+    border-radius:4px; text-transform:uppercase; margin-bottom:14px; border:1px solid var(--gold);
+  }
+  .hero h1{
+    font-size:clamp(1.6rem,5vw,2.4rem); font-weight:900; text-transform:uppercase;
+    letter-spacing:-.5px; line-height:1.1; margin-bottom:10px;
+  }
+  .hero h1 span{color:var(--gold);}
+  .hero p{color:var(--gray); font-size:.9rem; max-width:600px; margin:0 auto;}
+  .hero .updated{
+    display:inline-block; margin-top:14px; font-size:.75rem; color:var(--gray);
+    background:rgba(255,255,255,.05); padding:5px 12px; border-radius:20px;
+    letter-spacing:1px;
+  }
+
+  /* CONTENT */
+  .content{
+    max-width:820px; margin:0 auto; padding:40px 20px 60px;
+  }
+  .content h2{
+    font-size:1.15rem; font-weight:900; text-transform:uppercase;
+    letter-spacing:.5px; margin-top:36px; margin-bottom:12px;
+    color:var(--gold); display:flex; align-items:center; gap:10px;
+  }
+  .content h2:first-child{margin-top:0;}
+  .content h2::before{
+    content:""; width:4px; height:20px; background:var(--crimson);
+    border-radius:2px; display:inline-block;
+  }
+  .content h3{
+    font-size:.95rem; font-weight:900; margin-top:20px; margin-bottom:8px;
+    color:#fff; text-transform:uppercase; letter-spacing:.5px;
+  }
+  .content p{
+    font-size:.92rem; color:#d0d0d0; margin-bottom:12px;
+  }
+  .content ul{
+    list-style:none; margin-bottom:16px;
+  }
+  .content ul li{
+    font-size:.92rem; color:#d0d0d0; margin-bottom:8px;
+    padding-left:22px; position:relative;
+  }
+  .content ul li::before{
+    content:"▸"; color:var(--crimson); position:absolute;
+    left:0; top:0; font-weight:900;
+  }
+  .content strong{color:#fff;}
+  
+  .info-box{
+    background:rgba(200,16,46,.08); border-left:4px solid var(--crimson);
+    padding:16px 18px; border-radius:6px; margin:20px 0;
+  }
+  .info-box p{margin-bottom:0; font-size:.88rem; color:#e0e8f0;}
+  .info-box strong{color:var(--gold);}
+
+  .contact-box{
+    background:var(--dark-2); border:1px solid #222; border-radius:12px;
+    padding:24px; margin-top:30px; text-align:center;
+  }
+  .contact-box h3{
+    font-size:1rem; font-weight:900; color:var(--gold);
+    text-transform:uppercase; letter-spacing:1px; margin-bottom:10px;
+  }
+  .contact-box p{color:var(--gray); font-size:.88rem; margin-bottom:6px;}
+  .contact-box a{color:var(--gold); font-weight:700;}
+
+  /* FOOTER */
+  footer{
+    background:#050505; padding:30px 16px; text-align:center;
+    border-top:1px solid #1a1a1a; font-size:.75rem; color:#555;
+  }
+  footer a{color:#777; text-decoration:none;}
+  footer .links{
+    display:flex; gap:16px; justify-content:center; flex-wrap:wrap; margin-bottom:14px;
+  }
+
+  @media(max-width:600px){
+    .content h2{font-size:1.05rem;}
+    .content p, .content ul li{font-size:.88rem;}
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+  <div class="brand">🏆 VARSITY BOWL</div>
+  <a href="index.html" class="back">← Back to Home</a>
+</div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">Legal</div>
+  <h1>Privacy <span>Policy</span></h1>
+  <p>How we collect, use, and protect your information when you use Varsity Bowl.</p>
+  <div class="updated">Last Updated: October 1, 2026</div>
+</div>
+
+<!-- CONTENT -->
+<div class="content">
+
+  <p>Welcome to Varsity Bowl ("we," "us," "our," or "the Site"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website at <a href="https://varsitybowl.github.io/FootBall/">https://varsitybowl.github.io/FootBall/</a> or any related services. By using the Site, you consent to the practices described in this policy.</p>
+
+  <h2>1. Information We Collect</h2>
+  <p>We may collect the following types of information when you use our Site:</p>
+
+  <h3>a. Information You Provide Voluntarily</h3>
+  <ul>
+    <li><strong>Registration Data:</strong> When you fill out our Team Registration form, we collect your name, email address, phone number, team name, school name, city, state, and any additional notes you provide.</li>
+    <li><strong>Communications:</strong> If you contact us via email, we may keep a record of that correspondence.</li>
+  </ul>
+
+  <h3>b. Information Collected Automatically</h3>
+  <ul>
+    <li><strong>Log Data:</strong> We automatically collect certain information when you visit the Site, including your IP address, browser type, operating system, referring URLs, and pages viewed.</li>
+    <li><strong>Device Information:</strong> Type of device, unique device identifiers, and mobile network information.</li>
+    <li><strong>Cookies and Similar Technologies:</strong> We use cookies and similar tracking technologies to track activity on our Site and hold certain information.</li>
+  </ul>
+
+  <h2>2. How We Use Your Information</h2>
+  <p>We use the information we collect for the following purposes:</p>
+  <ul>
+    <li>To operate, maintain, and improve the Site and its features.</li>
+    <li>To process and respond to your team registration requests.</li>
+    <li>To send you administrative information, updates, and promotional content (if you opt-in).</li>
+    <li>To monitor and analyze trends, usage, and activities in connection with the Site.</li>
+    <li>To detect, prevent, and address technical issues or fraudulent activity.</li>
+    <li>To comply with legal obligations.</li>
+  </ul>
+
+  <h2>3. Third-Party Services & Advertising</h2>
+  <p>Our Site integrates with third-party services to deliver content and functionality. These third parties may collect information about you when you interact with our Site:</p>
+
+  <h3>a. CPA Grip (Video Locker / Content Verification)</h3>
+  <ul>
+    <li>When you click "Watch Live" or access certain content, you may be redirected to a CPA Grip Video Locker.</li>
+    <li>CPA Grip and its advertising partners may collect information such as your IP address, device identifiers, and interaction data.</li>
+    <li>Please review CPA Grip's privacy policy at <a href="https://cpagrip.com/privacy-policy" target="_blank" rel="noopener">https://cpagrip.com/privacy-policy</a>.</li>
+  </ul>
+
+  <h3>b. Formspree (Form Processing)</h3>
+  <ul>
+    <li>Our Team Registration form is powered by Formspree, which processes form submissions on our behalf.</li>
+    <li>Formspree may store the data you submit to help us respond to your request. Review their policy at <a href="https://formspree.io/legal/privacy-policy/" target="_blank" rel="noopener">https://formspree.io/legal/privacy-policy/</a>.</li>
+  </ul>
+
+  <h3>c. GitHub Pages (Hosting)</h3>
+  <ul>
+    <li>Our Site is hosted on GitHub Pages. GitHub may collect technical information (IP addresses, logs) as part of its hosting services. See <a href="https://docs.github.com/en/site-policy/privacy-policies" target="_blank" rel="noopener">GitHub's Privacy Policy</a>.</li>
+  </ul>
+
+  <div class="info-box">
+    <p><strong>⚠️ Important:</strong> We do not sell your personal information to third parties. However, third-party services listed above may use cookies or similar technologies to serve you relevant advertisements and offers.</p>
+  </div>
+
+  <h2>4. Cookies & Tracking Technologies</h2>
+  <p>We use cookies and similar tracking technologies to track activity on our Site. Cookies are small data files stored on your device. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, some portions of our Site may not function properly.</p>
+  <p>Types of cookies we use:</p>
+  <ul>
+    <li><strong>Essential Cookies:</strong> Necessary for the Site to function.</li>
+    <li><strong>Analytics Cookies:</strong> Help us understand how visitors interact with the Site.</li>
+    <li><strong>Advertising Cookies:</strong> Used by third-party partners (like CPA Grip) to deliver relevant ads.</li>
+  </ul>
+
+  <h2>5. Children's Privacy</h2>
+  <p>Our Site is not directed to individuals under the age of 13. We do not knowingly collect personal information from children under 13. If you are a parent or guardian and believe your child has provided us with personal information, please contact us so we can delete such information.</p>
+  <p>Users between 13 and 18 should use the Site only with the permission of a parent or legal guardian.</p>
+
+  <h2>6. Data Security</h2>
+  <p>We implement reasonable administrative, technical, and physical security measures to protect your personal information. However, no method of transmission over the Internet or method of electronic storage is 100% secure. We cannot guarantee absolute security of your data.</p>
+
+  <h2>7. Your Rights</h2>
+  <p>Depending on your jurisdiction, you may have the following rights regarding your personal information:</p>
+  <ul>
+    <li><strong>Access:</strong> Request a copy of the personal data we hold about you.</li>
+    <li><strong>Correction:</strong> Request that we correct inaccurate or incomplete data.</li>
+    <li><strong>Deletion:</strong> Request that we delete your personal data.</li>
+    <li><strong>Opt-Out:</strong> Unsubscribe from our marketing communications.</li>
+    <li><strong>Restriction:</strong> Request that we restrict processing of your data.</li>
+  </ul>
+  <p>To exercise these rights, please contact us using the information provided below.</p>
+
+  <h2>8. Third-Party Links</h2>
+  <p>Our Site may contain links to third-party websites, advertisements, and offers that are not owned or controlled by us. We are not responsible for the privacy practices of these third parties. We encourage you to review the privacy policies of every website you visit.</p>
+
+  <h2>9. Changes to This Privacy Policy</h2>
+  <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated "Last Updated" date. Your continued use of the Site after any changes constitutes your acceptance of the updated policy.</p>
+
+  <h2>10. Disclaimer of Affiliation</h2>
+  <p>Varsity Bowl is an independent fan-based website and live streaming information portal. We are <strong>not affiliated, associated, authorized, endorsed by, or in any way officially connected</strong> with any high school athletic association, the NFHS, the NCAA, the NFL, or any other official sports organization. All team names, logos, and trademarks mentioned are the property of their respective owners and are used for informational and entertainment purposes only.</p>
+
+  <h2>11. Limitation of Liability</h2>
+  <p>By using this Site, you agree that Varsity Bowl, its owners, and operators shall not be held liable for any direct, indirect, incidental, or consequential damages arising from your use of the Site, including but not limited to reliance on information provided, interactions with third-party advertisers, or technical issues.</p>
+
+  <h2>12. Governing Law</h2>
+  <p>This Privacy Policy shall be governed and construed in accordance with applicable laws. Any disputes arising from the use of this Site shall be resolved in accordance with those laws.</p>
+
+  <div class="contact-box">
+    <h3>📧 Contact Us</h3>
+    <p>If you have questions about this Privacy Policy or wish to exercise your data rights, please contact:</p>
+    <p><strong>Email:</strong> <a href="mailto:adminmodis@gmail.com">adminmodis@gmail.com</a></p>
+    <p><strong>Website:</strong> <a href="https://varsitybowl.github.io/FootBall/">varsitybowl.github.io/FootBall/</a></p>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="links">
+    <a href="index.html">Home</a>
+    <a href="teams.html">Teams & Schedule</a>
+    <a href="privacy.html">Privacy Policy</a>
+  </div>
+  <p>© 2026 Varsity Bowl. All rights reserved.</p>
+  <p style="margin-top:8px;">This is a fan page and is not affiliated with any official athletic association.</p>
+</footer>
+
+</body>
+</html>
