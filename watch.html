@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-<title>🔴 LIVE — Watch in HD | Varsity Bowl</title>
-<meta name="description" content="Watch the game live in Full HD. Free access — no signup needed." />
+<title>🔥 TOP 10 — Live HS Football Games | Varsity Bowl</title>
+<meta name="description" content="Watch the Top 10 high school football games LIVE in Full HD. Free access." />
 
 <!-- FAVICON -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230a1f44'/%3E%3Crect x='4' y='4' width='92' height='92' rx='16' fill='none' stroke='%23c8102e' stroke-width='3'/%3E%3Ctext x='50' y='68' font-size='58' text-anchor='middle'%3E%F0%9F%8F%86%3C/text%3E%3C/svg%3E" />
 
 <!-- OG TAGS -->
 <meta property="og:type" content="website" />
-<meta property="og:title" content="🔴 LIVE — Watch in HD | Varsity Bowl" />
-<meta property="og:description" content="Watch the game live in Full HD. Free access — no signup needed." />
+<meta property="og:title" content="🔥 TOP 10 — Live HS Football Games | Varsity Bowl" />
+<meta property="og:description" content="Watch the Top 10 high school football games LIVE in Full HD." />
 <meta property="og:image" content="https://varsitybowl.github.io/FootBall/og-image.jpg" />
 <meta property="og:image:width" content="1731" />
 <meta property="og:image:height" content="909" />
@@ -22,7 +22,7 @@
   :root{
     --navy:#0a1f44; --crimson:#c8102e; --crimson-2:#a00d24;
     --gold:#f5c518; --dark:#0a0a0a; --dark-2:#141414;
-    --white:#fff; --gray:#b8b8b8; --live:#ff0033;
+    --white:#fff; --gray:#b8b8b8; --live:#ff0033; --green:#16a34a;
   }
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
   html,body{overflow-x:hidden;}
@@ -30,7 +30,6 @@
     font-family:'Helvetica Neue',Arial,sans-serif;
     background:var(--dark); color:var(--white);
     line-height:1.5; min-height:100vh;
-    display:flex; flex-direction:column;
   }
   a{color:inherit;text-decoration:none;}
 
@@ -39,190 +38,240 @@
     background:#000; padding:12px 16px;
     display:flex; justify-content:space-between; align-items:center;
     border-bottom:2px solid var(--crimson);
+    position:sticky; top:0; z-index:100;
   }
   .brand{
     font-weight:900; font-size:1rem; letter-spacing:1px;
     color:var(--gold); text-transform:uppercase;
-    display:flex; align-items:center; gap:8px;
   }
   .live-pill{
     display:inline-flex; align-items:center; gap:6px;
     background:var(--live); color:#fff;
     font-size:.65rem; font-weight:900;
     padding:5px 12px; border-radius:20px;
-    letter-spacing:1px;
-    animation:blink 1.5s infinite;
+    letter-spacing:1px; animation:blink 1.5s infinite;
   }
   .live-dot{width:6px;height:6px;background:#fff;border-radius:50%;}
   @keyframes blink{0%,100%{opacity:1;}50%{opacity:.5;}}
 
-  /* MAIN */
-  main{
-    flex:1; display:flex; flex-direction:column;
-    justify-content:center; align-items:center;
-    padding:24px 16px; max-width:900px; margin:0 auto; width:100%;
+  /* HERO */
+  .hero{
+    background:linear-gradient(135deg,var(--navy),#0d2a5c);
+    padding:28px 16px 24px; text-align:center;
+    border-bottom:1px solid #1a1a1a;
   }
-
-  /* VIDEO PLAYER */
-  .player-container{
-    width:100%; max-width:720px;
-    background:#000; border-radius:12px;
-    overflow:hidden; position:relative;
-    aspect-ratio:16/9;
-    box-shadow:0 20px 60px rgba(0,0,0,.6), 0 0 0 1px rgba(245,197,24,.15);
-    cursor:pointer; margin-bottom:24px;
-    border:1px solid rgba(245,197,24,.2);
+  .hero .badge{
+    display:inline-block; background:var(--crimson); color:#fff;
+    font-weight:900; font-size:.68rem; letter-spacing:3px;
+    padding:6px 14px; border-radius:4px;
+    text-transform:uppercase; margin-bottom:12px;
+    border:1px solid var(--gold);
   }
-  .player-poster{
-    position:absolute; inset:0;
-    background:
-      linear-gradient(rgba(0,0,0,.4),rgba(0,0,0,.8)),
-      radial-gradient(circle at 50% 40%, #1a7a3f 0%, #0a1f44 80%);
-    display:flex; flex-direction:column;
-    align-items:center; justify-content:center;
-    text-align:center; padding:20px;
-  }
-  .player-poster::before{
-    content:""; position:absolute; inset:0;
-    background:repeating-linear-gradient(-45deg,rgba(255,255,255,.02) 0 20px,transparent 20px 40px);
-  }
-  .poster-badge{
-    display:inline-flex; align-items:center; gap:6px;
-    background:var(--live); color:#fff;
-    font-size:.7rem; font-weight:900;
-    padding:5px 12px; border-radius:20px;
-    letter-spacing:2px; margin-bottom:16px;
-    animation:blink 1.5s infinite;
-    position:relative; z-index:2;
-  }
-  .poster-title{
-    font-size:clamp(1.2rem,4.5vw,1.8rem);
+  .hero h1{
+    font-size:clamp(1.3rem,5vw,2rem);
     font-weight:900; text-transform:uppercase;
-    letter-spacing:1px; margin-bottom:8px;
-    text-shadow:0 2px 20px rgba(0,0,0,.9);
-    position:relative; z-index:2;
+    letter-spacing:-.5px; line-height:1.15;
+    margin-bottom:8px;
   }
-  .poster-sub{
-    font-size:clamp(.75rem,2.5vw,.95rem);
-    color:var(--gold); letter-spacing:2px;
-    text-transform:uppercase; font-weight:700;
-    margin-bottom:20px;
-    position:relative; z-index:2;
+  .hero h1 span{color:var(--gold);}
+  .hero p{
+    color:var(--gray); font-size:.85rem;
+    max-width:600px; margin:0 auto;
   }
 
-  /* PLAY BUTTON */
-  .play-btn{
-    position:absolute; z-index:5;
-    top:50%; left:50%; transform:translate(-50%,-50%);
-    width:90px; height:90px;
-    background:var(--crimson); border-radius:50%;
-    display:flex; align-items:center; justify-content:center;
-    border:4px solid #fff;
-    cursor:pointer;
-    box-shadow:0 10px 40px rgba(200,16,46,.6), 0 0 0 0 rgba(200,16,46,.7);
-    animation:pulse 2s infinite;
-    transition:transform .2s;
-  }
-  .play-btn:hover{transform:translate(-50%,-50%) scale(1.1);}
-  .play-btn svg{width:38px;height:38px;margin-left:6px;fill:#fff;}
-  @keyframes pulse{
-    0%{box-shadow:0 10px 40px rgba(200,16,46,.6), 0 0 0 0 rgba(200,16,46,.7);}
-    70%{box-shadow:0 10px 40px rgba(200,16,46,.6), 0 0 0 30px rgba(200,16,46,0);}
-    100%{box-shadow:0 10px 40px rgba(200,16,46,.6), 0 0 0 0 rgba(200,16,46,0);}
+  /* CONTAINER */
+  .container{
+    max-width:800px; margin:0 auto;
+    padding:20px 14px 60px;
   }
 
-  /* FAKE CONTROLS */
-  .fake-controls{
-    position:absolute; bottom:0; left:0; right:0;
-    background:linear-gradient(transparent,rgba(0,0,0,.95));
-    padding:8px 12px 6px; z-index:6;
-    pointer-events:none;
-  }
-  .fake-progress{
-    width:100%; height:3px; background:rgba(255,255,255,.25);
-    border-radius:3px; overflow:hidden; margin-bottom:6px;
-  }
-  .fake-progress-fill{
-    width:12%; height:100%; background:var(--crimson);
-    border-radius:3px; position:relative;
-  }
-  .fake-progress-fill::after{
-    content:""; position:absolute; right:-4px; top:50%;
-    transform:translateY(-50%); width:8px; height:8px;
-    background:var(--crimson); border-radius:50%; border:2px solid #fff;
-  }
-  .fake-controls-row{
-    display:flex; justify-content:space-between; align-items:center;
-    color:#fff; font-size:.65rem;
-  }
-
-  /* VIEWER BAR */
-  .viewer-bar{
-    display:flex; align-items:center; justify-content:center;
-    gap:8px; font-size:.85rem; color:var(--gray);
-    margin-bottom:24px;
-  }
-  .viewer-bar .dot{
-    width:8px;height:8px;background:var(--live);
-    border-radius:50%; animation:blink 1.2s infinite;
-  }
-  .viewer-bar b{color:#fff;}
-
-  /* MAIN CTA */
-  .main-cta{
-    display:block; width:100%; max-width:520px;
-    background:linear-gradient(135deg,var(--crimson),var(--crimson-2));
-    color:#fff; padding:20px 28px;
-    border-radius:12px; border:2px solid var(--crimson);
-    font-weight:900; text-transform:uppercase;
-    letter-spacing:2px; font-size:1.05rem;
-    text-align:center; cursor:pointer;
-    box-shadow:0 12px 35px rgba(200,16,46,.5);
-    transition:all .2s;
-    animation:ctaPulse 2s infinite;
-  }
-  .main-cta:hover{
-    transform:translateY(-3px);
-    box-shadow:0 18px 45px rgba(200,16,46,.7);
-  }
-  @keyframes ctaPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.02);}}
-
-  .cta-sub{
-    text-align:center; font-size:.75rem;
-    color:#666; margin-top:14px;
-    letter-spacing:1px;
-  }
-
-  /* STEPS */
-  .steps{
-    display:grid; grid-template-columns:repeat(3,1fr);
-    gap:12px; width:100%; max-width:620px;
-    margin-top:36px;
-  }
-  .step{
+  /* GAME CARD */
+  .game-card{
     background:var(--dark-2);
-    border:1px solid #222; border-radius:10px;
-    padding:16px 12px; text-align:center;
+    border:1px solid #222;
+    border-radius:14px;
+    margin-bottom:16px;
+    overflow:hidden;
+    transition:all .25s;
+    position:relative;
   }
-  .step .num{
-    width:32px;height:32px;background:var(--crimson);
+  .game-card:hover{
+    border-color:rgba(245,197,24,.4);
+    transform:translateY(-2px);
+    box-shadow:0 10px 30px rgba(0,0,0,.4);
+  }
+  .game-card.top3{
+    border-color:rgba(200,16,46,.5);
+    box-shadow:0 0 0 1px rgba(245,197,24,.15);
+  }
+
+  /* RANK BADGE */
+  .rank-badge{
+    position:absolute; top:12px; left:12px;
+    width:36px; height:36px;
+    background:linear-gradient(135deg,var(--crimson),var(--crimson-2));
+    border:2px solid var(--gold);
     border-radius:50%;
     display:flex; align-items:center; justify-content:center;
-    margin:0 auto 10px; font-weight:900; font-size:.9rem;
+    font-weight:900; font-size:.95rem; color:#fff;
+    z-index:5;
+    box-shadow:0 4px 15px rgba(200,16,46,.5);
   }
-  .step p{
-    font-size:.75rem; color:#ccc; line-height:1.4;
+  .game-card:nth-child(1) .rank-badge{background:linear-gradient(135deg,#f5c518,#e0a800); color:#000;}
+  .game-card:nth-child(2) .rank-badge{background:linear-gradient(135deg,#c0c0c0,#8a8a8a); color:#000;}
+  .game-card:nth-child(3) .rank-badge{background:linear-gradient(135deg,#cd7f32,#a05a1f); color:#fff;}
+
+  /* GAME HEADER */
+  .game-header{
+    padding:14px 14px 10px 58px;
+    border-bottom:1px solid #1a1a1a;
+    position:relative;
+  }
+  .game-state{
+    font-size:.68rem; color:var(--gold);
+    font-weight:900; letter-spacing:1.5px;
+    text-transform:uppercase; margin-bottom:4px;
+  }
+  .game-matchup{
+    display:flex; align-items:center; gap:8px;
+    flex-wrap:nowrap; margin-bottom:6px;
+  }
+  .game-team{
+    font-size:clamp(.85rem,3.2vw,1rem);
+    font-weight:900; text-transform:uppercase;
+    letter-spacing:.3px; white-space:nowrap;
+  }
+  .game-vs{
+    color:var(--crimson); font-weight:900;
+    font-size:.75rem; padding:3px 7px;
+    background:rgba(200,16,46,.15);
+    border:1px solid var(--crimson);
+    border-radius:5px; flex-shrink:0;
+  }
+  .game-time{
+    display:flex; align-items:center; gap:12px;
+    font-size:.72rem; color:var(--gray);
+    letter-spacing:.5px;
+  }
+  .game-time .live-mini{
+    color:var(--live); font-weight:900;
+    display:inline-flex; align-items:center; gap:4px;
+  }
+  .game-time .live-mini .mini-dot{
+    width:5px; height:5px;
+    background:var(--live); border-radius:50%;
+    animation:blink 1.2s infinite;
   }
 
-  /* TRUST */
-  .trust{
-    display:flex; gap:16px; justify-content:center;
-    flex-wrap:wrap; margin-top:28px;
-    font-size:.7rem; color:#666; letter-spacing:1px;
+  /* HYPE TEXT */
+  .game-hype{
+    padding:12px 14px;
+    font-size:.78rem; color:#ddd;
+    line-height:1.5;
+    background:rgba(245,197,24,.03);
+    border-bottom:1px solid #1a1a1a;
   }
-  .trust span{display:inline-flex; align-items:center; gap:4px;}
+  .game-hype .hype-badge{
+    display:inline-block;
+    background:var(--crimson); color:#fff;
+    font-size:.6rem; font-weight:900;
+    padding:2px 7px; border-radius:3px;
+    letter-spacing:1px; margin-bottom:6px;
+    text-transform:uppercase;
+  }
 
-  /* MODAL WITH COUNTDOWN */
+  /* LIVE CHAT */
+  .chat-panel{
+    padding:12px 14px;
+    background:#0d0d0d;
+    border-bottom:1px solid #1a1a1a;
+  }
+  .chat-header{
+    display:flex; justify-content:space-between; align-items:center;
+    margin-bottom:10px;
+    padding-bottom:8px;
+    border-bottom:1px solid #1a1a1a;
+  }
+  .chat-header-title{
+    font-size:.68rem; font-weight:900;
+    letter-spacing:2px; text-transform:uppercase;
+    color:var(--gold);
+    display:flex; align-items:center; gap:6px;
+  }
+  .chat-header-title .chat-live-dot{
+    width:6px; height:6px;
+    background:var(--live); border-radius:50%;
+    animation:blink 1.2s infinite;
+  }
+  .chat-count{
+    font-size:.65rem; color:var(--gray);
+  }
+  .chat-count b{color:#fff;}
+  .chat-messages{
+    max-height:180px;
+    overflow-y:auto;
+    scrollbar-width:thin;
+    scrollbar-color:var(--crimson) transparent;
+  }
+  .chat-messages::-webkit-scrollbar{width:4px;}
+  .chat-messages::-webkit-scrollbar-thumb{background:var(--crimson);border-radius:2px;}
+  .chat-msg{
+    font-size:.75rem;
+    color:#ccc;
+    margin-bottom:7px;
+    line-height:1.4;
+    animation:slideIn .35s ease-out;
+    padding-left:0;
+  }
+  .chat-msg b{
+    color:var(--gold);
+    font-weight:900;
+  }
+  .chat-msg .msg-team-tag{
+    display:inline-block;
+    font-size:.55rem;
+    padding:1px 5px;
+    border-radius:3px;
+    margin-left:4px;
+    font-weight:900;
+    letter-spacing:.5px;
+    vertical-align:middle;
+  }
+  .team-tag-home{background:rgba(200,16,46,.25); color:#fca5a5;}
+  .team-tag-away{background:rgba(14,165,233,.25); color:#93c5fd;}
+  @keyframes slideIn{
+    from{opacity:0;transform:translateY(10px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  /* WATCH BUTTON */
+  .watch-btn-wrap{
+    padding:12px 14px 14px;
+  }
+  .watch-btn{
+    display:flex; align-items:center; justify-content:center;
+    gap:8px;
+    width:100%;
+    background:linear-gradient(135deg,var(--crimson),var(--crimson-2));
+    color:#fff; padding:14px 20px;
+    border-radius:10px;
+    font-weight:900; text-transform:uppercase;
+    letter-spacing:1.5px; font-size:.85rem;
+    border:2px solid var(--crimson);
+    cursor:pointer;
+    box-shadow:0 8px 20px rgba(200,16,46,.35);
+    transition:all .2s;
+    text-align:center;
+  }
+  .watch-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 30px rgba(200,16,46,.55);
+  }
+  .watch-btn svg{
+    width:16px; height:16px; fill:#fff;
+  }
+
+  /* MODAL */
   .modal{
     position:fixed; inset:0;
     background:rgba(0,0,0,.95);
@@ -243,8 +292,6 @@
     from{opacity:0;transform:scale(.9) translateY(20px);}
     to{opacity:1;transform:scale(1) translateY(0);}
   }
-
-  /* COUNTDOWN CIRCLE */
   .countdown-circle{
     width:90px; height:90px; margin:0 auto 20px;
     position:relative;
@@ -271,7 +318,6 @@
     font-size:2.4rem; font-weight:900; color:var(--gold);
     text-shadow:0 2px 15px rgba(245,197,24,.5);
   }
-
   .modal-box h3{
     font-size:1.15rem; font-weight:900;
     text-transform:uppercase; letter-spacing:1px;
@@ -289,7 +335,6 @@
     text-transform:uppercase; letter-spacing:2px;
     font-size:.95rem; border:2px solid var(--crimson);
     cursor:pointer; transition:all .2s;
-    position:relative; overflow:hidden;
   }
   .modal-box .unlock-btn:hover{
     transform:translateY(-2px);
@@ -317,13 +362,13 @@
   footer a{color:#777;margin:0 6px;}
 
   @media(max-width:640px){
-    .play-btn{width:75px;height:75px;border-width:3px;}
-    .play-btn svg{width:32px;height:32px;}
-    .steps{grid-template-columns:1fr;}
-    .step{display:flex; align-items:center; gap:12px; text-align:left; padding:14px;}
-    .step .num{margin:0;flex-shrink:0;}
-    .main-cta{font-size:.9rem; padding:18px 22px;}
-    .player-container{border-radius:8px;}
+    .hero h1{font-size:1.2rem;}
+    .hero p{font-size:.8rem;}
+    .game-header{padding:12px 12px 8px 52px;}
+    .rank-badge{width:32px;height:32px;font-size:.85rem;top:10px;left:10px;}
+    .game-team{font-size:.82rem;}
+    .game-hype{font-size:.75rem;}
+    .chat-msg{font-size:.72rem;}
     .modal-box{padding:28px 20px;}
     .countdown-circle{width:80px;height:80px;}
     .countdown-num{font-size:2rem;}
@@ -338,83 +383,34 @@
   <div class="live-pill"><span class="live-dot"></span>LIVE</div>
 </div>
 
-<main>
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">🏈 Top 10 Bergengsi</div>
+  <h1>Top 10 <span>High School Football</span> Games</h1>
+  <p>Watch the most anticipated matchups in America — live in Full HD. Free access.</p>
+</div>
 
-  <!-- VIDEO PLAYER -->
-  <div class="player-container" id="player">
-    <div class="player-poster">
-      <div class="poster-badge">🔴 LIVE NOW</div>
-      <div class="poster-title">Championship Live Stream</div>
-      <div class="poster-sub">Full HD · Free Access</div>
-    </div>
-    <div class="play-btn" id="playBtn">
-      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-    </div>
-    <div class="fake-controls">
-      <div class="fake-progress"><div class="fake-progress-fill"></div></div>
-      <div class="fake-controls-row">
-        <span>▶ ⏸ 🔊 0:42 / 48:00</span>
-        <span style="color:var(--live);font-weight:900;">● LIVE</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- VIEWER COUNT -->
-  <div class="viewer-bar">
-    <span class="dot"></span>
-    <span><b id="viewerCount">12,847</b> watching now</span>
-  </div>
-
-  <!-- MAIN CTA -->
-  <a href="#" class="main-cta" id="mainCta">📺 Watch Live in Full HD</a>
-  <div class="cta-sub">Free · No signup · 1-step verify</div>
-
-  <!-- STEPS -->
-  <div class="steps">
-    <div class="step">
-      <div class="num">1</div>
-      <p>Click Watch Live button</p>
-    </div>
-    <div class="step">
-      <div class="num">2</div>
-      <p>Complete 1-step verification</p>
-    </div>
-    <div class="step">
-      <div class="num">3</div>
-      <p>Stream starts in HD</p>
-    </div>
-  </div>
-
-  <!-- TRUST -->
-  <div class="trust">
-    <span>🔒 Secure</span>
-    <span>⚡ Fast Server</span>
-    <span>📱 Mobile Ready</span>
-    <span>💯 100% Free</span>
-  </div>
-
-</main>
+<!-- CONTAINER -->
+<div class="container" id="gameList">
+  <!-- Game cards akan di-generate oleh JavaScript -->
+</div>
 
 <!-- MODAL WITH COUNTDOWN -->
 <div class="modal" id="modal">
   <div class="modal-box">
-    <!-- COUNTDOWN CIRCLE -->
     <div class="countdown-circle" id="countdownCircle">
       <svg viewBox="0 0 90 90">
         <circle class="countdown-bg" cx="45" cy="45" r="38"></circle>
         <circle class="countdown-progress" id="countdownProgress" cx="45" cy="45" r="38"></circle>
       </svg>
-      <div class="countdown-num" id="countdownNum">3</div>
+      <div class="countdown-num" id="countdownNum">5</div>
     </div>
-
     <h3>Switching Stream Server...</h3>
     <p id="modalText">Your stream is being redirected to the HD server. Please verify you are human to continue watching.</p>
-
-    <!-- MANUAL BUTTON (FALLBACK) -->
     <a href="https://singingfiles.com/show.php?l=0&id=1916832" target="_blank" rel="noopener" class="unlock-btn" id="unlockBtn">
       ✅ Verify & Continue
     </a>
-    <p class="small" id="autoText">Auto-redirecting in <b id="autoTimer">3</b> seconds...</p>
+    <p class="small" id="autoText">Auto-redirecting in <b id="autoTimer">5</b> seconds...</p>
   </div>
 </div>
 
@@ -425,43 +421,310 @@
 </footer>
 
 <script>
-  // ============================
-  // 🔧 KONFIGURASI — GANTI LINK DI SINI
-  // ============================
+  // ============================================================
+  // 🔧 KONFIGURASI
+  // ============================================================
   var CPA_LINK = "https://singingfiles.com/show.php?l=0&id=1916832";
-  var REDIRECT_DELAY = 3; // detik sebelum auto-redirect
+  var REDIRECT_DELAY = 5; // detik
 
-  // ============================
-  // ELEMENT REFS
-  // ============================
+  // ============================================================
+  // DATA 10 GAME BERGENGSI (dari Excel Top10)
+  // ============================================================
+  var TOP_GAMES = [
+    {
+      rank: 1,
+      state: "California",
+      home: "Mater Dei", homeNick: "Monarchs",
+      away: "Santa Margarita", awayNick: "Eagles",
+      hype: "🔥 TRINITY LEAGUE GAME OF THE YEAR! #18 Mater Dei Monarchs invade #4 Santa Margarita Eagles for Orange County supremacy. Two D1 QB factories with 15+ Power 5 commits on the field — future NFL stars everywhere.",
+      reason: "#18 vs #4 Nasional · Trinity League El Clasico",
+      time: "7:00 PM CDT"
+    },
+    {
+      rank: 2,
+      state: "California",
+      home: "JSerra Catholic", homeNick: "Lions",
+      away: "St. John Bosco", awayNick: "Braves",
+      hype: "💀 BOSCO BOWL — NIGHTMARE IN BELLFLOWER! St. John Bosco Braves (#9 Nation) host JSerra Lions in a Trinity League bloodbath. Bosco's D-line averaging 5 sacks per game vs JSerra's 5-star QB.",
+      reason: "St. John Bosco #9 Nasional · Trinity League superpower",
+      time: "7:00 PM CDT"
+    },
+    {
+      rank: 3,
+      state: "California",
+      home: "Loyola", homeNick: "Cubs",
+      away: "Sierra Canyon", awayNick: "Trailblazers",
+      hype: "🌟 HOLLYWOOD LIGHTS! Sierra Canyon Trailblazers (#6 Nation) — home of celebrity kids & 10 D1 offers — welcome Loyola Cubs to Chatsworth. Sierra's WR corps runs 4.3s.",
+      reason: "Sierra Canyon #6 Nasional · sekolah seleb, full bintang 5",
+      time: "7:00 PM CDT"
+    },
+    {
+      rank: 4,
+      state: "Florida",
+      home: "St. Thomas Aquinas", homeNick: "Raiders",
+      away: "Chaminade-Madonna", awayNick: "Lions",
+      hype: "👑 #1 IN THE NATION ON DISPLAY! St. Thomas Aquinas Raiders — 13x Florida State Champs — put their crown on the line. 8 straight wins, outscoring opponents 287-34.",
+      reason: "STA #1 Nasional · 13x State Champ Florida",
+      time: "7:00 PM CDT"
+    },
+    {
+      rank: 5,
+      state: "Alabama",
+      home: "Thompson", homeNick: "Warriors",
+      away: "Hoover", awayNick: "Bucs",
+      hype: "🏈 ALABAMA CIVIL WAR! Thompson Warriors (#13 Nation) @ Hoover Bucs — the rivalry that splits Birmingham in half. 20,000 fans expected, both teams undefeated in region.",
+      reason: "Thompson #13 Nasional · Rivalry Alabama paling panas",
+      time: "7:00 PM CDT"
+    },
+    {
+      rank: 6,
+      state: "Maryland",
+      home: "St. Frances Academy", homeNick: "Panthers",
+      away: "Legacy School of Sport Sciences", awayNick: "Titans",
+      hype: "😤 MOST FEARED TEAM IN AMERICA! St. Frances Academy Panthers (#2 Nation) — the Baltimore bullies who send 15 kids D1 every year. They've won 42 straight by avg 38 points.",
+      reason: "St. Frances #2 Nasional · tim paling ditakuti di DMV",
+      time: "7:00 PM CDT"
+    },
+    {
+      rank: 7,
+      state: "Tennessee",
+      home: "McCallie", homeNick: "Blue Tornado",
+      away: "Baylor", awayNick: "Red Raiders",
+      hype: "⚔️ 105 YEARS OF HATE! McCallie Blue Tornado vs Baylor Red Raiders — Chattanooga's oldest rivalry since 1919. Baylor (#11 Nation) hosts at Heywood Stadium.",
+      reason: "Baylor #11 Nasional · Rivalry Chattanooga 100 tahun",
+      time: "7:00 PM CDT"
+    },
+    {
+      rank: 8,
+      state: "Indiana",
+      home: "Brownsburg", homeNick: "Bulldogs",
+      away: "Zionsville", awayNick: "Eagles",
+      hype: "❄️ HOOSIER HEAVYWEIGHT FIGHT! Brownsburg Bulldogs (#15 Nation) — Indiana's most physical team — storm into Zionsville. Two 2000-yard rushers, two Big Ten commits at LB.",
+      reason: "Brownsburg #15 Nasional · HCC conference elite Indiana",
+      time: "7:00 PM CDT"
+    },
+    {
+      rank: 9,
+      state: "Nevada",
+      home: "Sacred Heart", homeNick: "Tigers",
+      away: "Bishop Gorman", awayNick: "Crusaders",
+      hype: "🎰 VEGAS SHOWTIME! Bishop Gorman Crusaders — 12x State Champs, 50 straight home wins — welcome Sacred Heart to Fertitta Field. Gorman has 7 players with 20+ offers.",
+      reason: "Bishop Gorman · 12x State Champ, pabrik NFL Las Vegas",
+      time: "7:00 PM CDT"
+    },
+    {
+      rank: 10,
+      state: "Georgia",
+      home: "Buford", homeNick: "Yellow Jackets",
+      away: "Lewisville", awayNick: "Lions",
+      hype: "🤠 GEORGIA INVADES TEXAS! Buford Yellow Jackets — 15x Georgia State Champs — drive 800 miles to challenge Lewisville Lions in TX. Buford's O-line averages 6'4 310lbs.",
+      reason: "Buford · 15x State Champ Georgia, main di Texas",
+      time: "7:00 PM CDT"
+    }
+  ];
+
+  // ============================================================
+  // FANS CLUB CHATS — per match (nama user + pesan)
+  // ============================================================
+  var CHAT_DATA = [
+    // Game 1: Mater Dei vs Santa Margarita
+    {
+      home: ["MonarchNation", "MD_4Life", "SantaAnaKing", "TrinityElite", "OC_Football"],
+      away: ["EagleFaithful", "SM_Hype", "RanchoSantaMarg", "EagleNation", "OC_Eagles"],
+      msgs: ["Trinity League is a BLOODBATH 🔥", "Monarchs all day! 👑", "Eagles gonna shock the world", "This is the game of the year", "Two D1 QBs on the field 🤯", "OC supremacy on the line!", "Let's go Monarchs!!! 🏈", "Eagles D gonna show up", "5-star recruits everywhere", "Mater Dei by 14 minimum"]
+    },
+    // Game 2: JSerra vs St. John Bosco
+    {
+      home: ["JSerraLions", "LionPride", "SC_Football", "LionsDen", "JSerraFan"],
+      away: ["BoscoBraves", "BraveNation", "BellflowerKing", "Bosco_Elite", "BraveUp"],
+      msgs: ["Bosco D-line is unstoppable 💀", "Lions gonna fight!", "Bellflower is a fortress 🏰", "Trinity League > All", "5-star QB vs 5-star D", "Braves by 21", "JSerra showing heart", "Sack city tonight 🏈", "Nightmare in Bellflower!", "Bosco = NFL factory"]
+    },
+    // Game 3: Loyola vs Sierra Canyon
+    {
+      home: ["LoyolaCubs", "CubNation", "LA_Football", "CubsPride", "LoyolaStrong"],
+      away: ["TrailblazerNation", "SC_Blaze", "ChatsworthKing", "TrailBlazers", "SC_Elite"],
+      msgs: ["Sierra Canyon = Hollywood 🔥", "Cubs gonna upset!", "4.3 speed everywhere", "Trailblazers all day!", "LA football is wild", "Celebrity kids on the field", "Loyola D gonna step up", "This game is ELECTRIC ⚡", "Sierra by 17", "Trailblazers 🏈🔥"]
+    },
+    // Game 4: St. Thomas Aquinas vs Chaminade-Madonna
+    {
+      home: ["STARaiders", "AquinasNation", "RaiderPride", "STA_Faithful", "FTL_Football"],
+      away: ["ChaminadeLions", "LionNation", "HollywoodLions", "CM_Elite", "LionStrong"],
+      msgs: ["STA = #1 in the nation 👑", "Chaminade gonna shock", "Raiders on top!", "13x State Champs 💪", "Lions showing fight", "STA defense is ELITE", "Florida football > all", "287-34 scoring margin 🤯", "Lions gonna battle", "Raiders by 28"]
+    },
+    // Game 5: Thompson vs Hoover
+    {
+      home: ["ThompsonWarriors", "WarriorNation", "AlabasterStrong", "TW_Elite", "WarriorUp"],
+      away: ["HooverBucs", "BucNation", "HooverStrong", "Bucs_Elite", "BucPride"],
+      msgs: ["Alabama Civil War 🔥", "Warriors gonna roll!", "Bucs all day!", "Birmingham is split in half", "This is SEC football", "Thompson D is nasty", "20K fans expected 🏟️", "Hoover showing up!", "Warriors by 10", "Let's go Bucs!!! 🏈"]
+    },
+    // Game 6: St. Frances vs Legacy
+    {
+      home: ["SFA_Panthers", "PantherNation", "BaltimoreElite", "SFA_Strong", "PantherPride"],
+      away: ["LegacyTitans", "TitanNation", "TexasTitan", "LegacyStrong", "TitanUp"],
+      msgs: ["St. Frances = most feared 😤", "Titans gonna shock!", "42 straight wins 🏆", "Baltimore bullies in Texas!", "Legacy gonna fight hard", "SFA sending 15 D1 kids", "Titans showing heart", "Panthers by 30+", "Texas vs Baltimore!", "SFA = NFL factory"]
+    },
+    // Game 7: McCallie vs Baylor
+    {
+      home: ["McCallieBlue", "TornadoNation", "ChattTown", "BlueTornado", "McCallieStrong"],
+      away: ["BaylorRedRaiders", "RedRaiderNation", "ChattanoogaFB", "Baylor_Elite", "RedRaiderPride"],
+      msgs: ["105 years of hate ⚔️", "Blue Tornado all day!", "Red Raiders gonna roll!", "Chattanooga shuts down tonight", "Oldest rivalry in TN", "Baylor by 14", "McCallie showing fight", "Heywood Stadium is PACKED", "Tornado warning 🏈", "Red Raiders #11 in nation!"]
+    },
+    // Game 8: Brownsburg vs Zionsville
+    {
+      home: ["BrownsburgDogs", "BulldogNation", "HoosierFB", "Burg_Strong", "BulldogPride"],
+      away: ["ZionsvilleEagles", "EagleNation", "ZvilleStrong", "Eagle_Elite", "EagleUp"],
+      msgs: ["Hoosier Heavyweight Fight! ❄️", "Bulldogs gonna bite!", "Eagles gonna soar!", "Smashmouth football tonight", "Two 2000-yard rushers 🤯", "Brownsburg by 10", "Zionsville showing up!", "HCC conference elite!", "Bulldogs D is nasty", "Eagles all day 🦅"]
+    },
+    // Game 9: Sacred Heart vs Bishop Gorman
+    {
+      home: ["SacredHeartFB", "TigerNation", "VegasTigers", "SH_Strong", "TigerPride"],
+      away: ["BishopGorman", "GaelNation", "VegasElite", "BG_Strong", "GaelUp"],
+      msgs: ["Vegas Showtime! 🎰", "Tigers gonna shock!", "Gorman 50 straight at home 🏰", "12x State Champs 💪", "Sacred Heart showing fight", "7 players with 20+ offers 🤯", "Gorman by 21", "Tigers gonna battle", "Fertitta Field is PACKED", "Gael Nation! 🏈"]
+    },
+    // Game 10: Buford vs Lewisville
+    {
+      home: ["BufordWolves", "YellowJacketNation", "GeorgiaFB", "Buford_Elite", "JacketPride"],
+      away: ["LewisvilleLions", "LionNation", "TexasLions", "LV_Strong", "LionUp"],
+      msgs: ["Georgia invades Texas! 🤠", "Buford gonna roll!", "Lions gonna defend Texas!", "800 miles for this W", "6'4 310lb O-line 💀", "Buford by 17", "Texas showing up!", "15x State Champs Georgia", "Jackets all day 🏈", "Lions gonna fight!"]
+    }
+  ];
+
+  // ============================================================
+  // RENDER GAME CARDS
+  // ============================================================
+  var gameList = document.getElementById('gameList');
+
+  function renderGames(){
+    var html = '';
+    TOP_GAMES.forEach(function(g, idx){
+      var top3Class = g.rank <= 3 ? 'top3' : '';
+      html += '<div class="game-card ' + top3Class + '" data-game="' + idx + '">' +
+        '<div class="rank-badge">#' + g.rank + '</div>' +
+        '<div class="game-header">' +
+          '<div class="game-state">' + g.state + ' HS Football</div>' +
+          '<div class="game-matchup">' +
+            '<div class="game-team">' + g.home + '</div>' +
+            '<div class="game-vs">VS</div>' +
+            '<div class="game-team">' + g.away + '</div>' +
+          '</div>' +
+          '<div class="game-time">' +
+            '<span class="live-mini"><span class="mini-dot"></span>LIVE</span>' +
+            '<span>🕐 ' + g.time + '</span>' +
+          '</div>' +
+        '</div>' +
+        '<div class="game-hype">' +
+          '<div class="hype-badge">⚡ ' + g.reason + '</div>' +
+          '<div>' + g.hype + '</div>' +
+        '</div>' +
+        '<div class="chat-panel">' +
+          '<div class="chat-header">' +
+            '<div class="chat-header-title"><span class="chat-live-dot"></span>Fan Chat Live</div>' +
+            '<div class="chat-count"><b id="chatCount' + idx + '">' + (200 + Math.floor(Math.random() * 800)) + '</b> online</div>' +
+          '</div>' +
+          '<div class="chat-messages" id="chat' + idx + '">' +
+            '<div class="chat-msg"><b>System:</b> Welcome to ' + g.home + ' vs ' + g.away + ' live chat! 🏈</div>' +
+          '</div>' +
+        '</div>' +
+        '<div class="watch-btn-wrap">' +
+          '<a href="#" class="watch-btn" data-watch="' + idx + '">' +
+            '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>' +
+            'WATCH LIVE IN HD' +
+          '</a>' +
+        '</div>' +
+      '</div>';
+    });
+    gameList.innerHTML = html;
+
+    // Attach watch button listeners
+    document.querySelectorAll('[data-watch]').forEach(function(btn){
+      btn.addEventListener('click', function(e){
+        e.preventDefault();
+        openModal();
+      });
+    });
+  }
+
+  renderGames();
+
+  // ============================================================
+  // LIVE CHAT ENGINE — per game
+  // ============================================================
+  function pickRandom(arr){ return arr[Math.floor(Math.random() * arr.length)]; }
+
+  function addChatMessage(gameIdx){
+    var chatEl = document.getElementById('chat' + gameIdx);
+    if(!chatEl) return;
+
+    var g = TOP_GAMES[gameIdx];
+    var cd = CHAT_DATA[gameIdx];
+    var isHome = Math.random() < 0.5;
+    var username = isHome ? pickRandom(cd.home) : pickRandom(cd.away);
+    var msg = pickRandom(cd.msgs);
+    var tagClass = isHome ? 'team-tag-home' : 'team-tag-away';
+    var tagText = isHome ? g.home.split(' ')[0].toUpperCase() : g.away.split(' ')[0].toUpperCase();
+
+    var msgDiv = document.createElement('div');
+    msgDiv.className = 'chat-msg';
+    var now = new Date();
+    var t = now.getHours().toString().padStart(2,'0') + ':' + now.getMinutes().toString().padStart(2,'0');
+    msgDiv.innerHTML = '<b>' + username + ':</b> ' + msg + ' <span class="msg-team-tag ' + tagClass + '">' + tagText + '</span> <span style="color:#555;font-size:.65rem;margin-left:4px;">' + t + '</span>';
+    chatEl.appendChild(msgDiv);
+
+    // Limit to 12 messages
+    while(chatEl.children.length > 12){
+      chatEl.removeChild(chatEl.firstChild);
+    }
+    chatEl.scrollTop = chatEl.scrollHeight;
+  }
+
+  // Start chat engines for all 10 games with different timing
+  CHAT_DATA.forEach(function(_, idx){
+    // Initial burst
+    setTimeout(function(){
+      for(var i = 0; i < 3; i++){
+        setTimeout(function(){ addChatMessage(idx); }, i * 300);
+      }
+    }, 500 + idx * 200);
+
+    // Continuous loop with random interval
+    function loop(){
+      var nextDelay = 4000 + Math.random() * 5000;
+      setTimeout(function(){
+        addChatMessage(idx);
+        // Update chat count
+        var countEl = document.getElementById('chatCount' + idx);
+        if(countEl){
+          var current = parseInt(countEl.textContent.replace(/,/g,'')) || 500;
+          current += Math.floor(Math.random() * 15) - 3;
+          if(current < 150) current = 150;
+          countEl.textContent = current.toLocaleString();
+        }
+        loop();
+      }, nextDelay);
+    }
+    loop();
+  });
+
+  // ============================================================
+  // MODAL + COUNTDOWN + AUTO REDIRECT
+  // ============================================================
   var modal = document.getElementById('modal');
-  var playBtn = document.getElementById('playBtn');
-  var mainCta = document.getElementById('mainCta');
-  var player = document.getElementById('player');
-  var countdownCircle = document.getElementById('countdownCircle');
   var countdownProgress = document.getElementById('countdownProgress');
   var countdownNum = document.getElementById('countdownNum');
   var unlockBtn = document.getElementById('unlockBtn');
   var autoTimer = document.getElementById('autoTimer');
   var autoText = document.getElementById('autoText');
   var modalText = document.getElementById('modalText');
+  var countdownCircle = document.getElementById('countdownCircle');
 
-  // Set link unlock button
   unlockBtn.href = CPA_LINK;
 
-  // ============================
-  // STATE
-  // ============================
   var countdownInterval = null;
-  var redirectTimeout = null;
   var isRedirecting = false;
 
-  // ============================
-  // MODAL OPEN (mulai countdown)
-  // ============================
   function openModal(e){
     if(e) e.preventDefault();
-    if(isRedirecting) return; // cegah double-trigger
+    if(isRedirecting) return;
     modal.classList.add('active');
     startCountdown();
   }
@@ -469,33 +732,29 @@
   function startCountdown(){
     var counter = REDIRECT_DELAY;
     countdownNum.textContent = counter;
+    autoTimer.textContent = counter;
 
-    // Reset progress bar
     countdownProgress.style.transition = 'none';
     countdownProgress.style.strokeDashoffset = '0';
-    void countdownProgress.offsetWidth; // force reflow
+    void countdownProgress.offsetWidth;
     countdownProgress.style.transition = 'stroke-dashoffset .3s linear';
 
-    // Update setiap 100ms untuk animasi smooth
     var elapsed = 0;
     var totalMs = REDIRECT_DELAY * 1000;
-    var circumference = 239; // 2 * π * r(38)
+    var circumference = 239;
 
+    if(countdownInterval) clearInterval(countdownInterval);
     countdownInterval = setInterval(function(){
       elapsed += 100;
       var progress = Math.min(elapsed / totalMs, 1);
-      
-      // Update progress circle
       countdownProgress.style.strokeDashoffset = (circumference * progress).toString();
 
-      // Update number
       var remaining = Math.max(Math.ceil(REDIRECT_DELAY - elapsed / 1000), 0);
       if(remaining !== parseInt(countdownNum.textContent)){
         countdownNum.textContent = remaining;
         autoTimer.textContent = remaining;
       }
 
-      // Selesai
       if(elapsed >= totalMs){
         clearInterval(countdownInterval);
         countdownInterval = null;
@@ -504,66 +763,36 @@
     }, 100);
   }
 
-  // ============================
-  // AUTO REDIRECT
-  // ============================
   function doRedirect(){
     if(isRedirecting) return;
     isRedirecting = true;
-
-    // Update UI sebelum redirect
     countdownCircle.style.display = 'none';
     modalText.innerHTML = '<strong style="color:var(--gold);">✅ Verification Ready</strong><br/>Redirecting to HD stream now...';
     autoText.innerHTML = '<span style="color:var(--gold);">Opening stream...</span>';
     unlockBtn.classList.add('pulse-ready');
-
-    // Redirect ke CPA Grip
     setTimeout(function(){
       window.location.href = CPA_LINK;
     }, 300);
   }
 
-  // ============================
-  // EVENT LISTENERS
-  // ============================
-  playBtn.addEventListener('click', function(e){ e.stopPropagation(); openModal(e); });
-  player.addEventListener('click', function(e){
-    if(!e.target.closest('.play-btn')) openModal(e);
+  // ESC to close (optional - remove if want to force)
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape'){
+      if(countdownInterval){ clearInterval(countdownInterval); countdownInterval = null; }
+      isRedirecting = false;
+      modal.classList.remove('active');
+      countdownCircle.style.display = 'block';
+      modalText.textContent = 'Your stream is being redirected to the HD server. Please verify you are human to continue watching.';
+      autoText.innerHTML = 'Auto-redirecting in <b id="autoTimer">' + REDIRECT_DELAY + '</b> seconds...';
+      unlockBtn.classList.remove('pulse-ready');
+      autoTimer = document.getElementById('autoTimer');
+    }
   });
-  mainCta.addEventListener('click', openModal);
 
-  // Klik di luar modal → TIDAK menutup modal (paksa tunggu countdown)
-  // Kalau mau bisa tutup, comment blok ini:
-  // modal.addEventListener('click', function(e){
-  //   if(e.target === modal){
-  //     if(countdownInterval){ clearInterval(countdownInterval); countdownInterval = null; }
-  //     modal.classList.remove('active');
-  //   }
-  // });
-
-  // Prevent user tap anywhere on modal to just close → handled above
-
-  // ============================
-  // FAKE VIEWER COUNT (naik terus)
-  // ============================
-  var viewerEl = document.getElementById('viewerCount');
-  var baseViewers = 12847;
-  setInterval(function(){
-    var change = Math.floor(Math.random() * 80) + 15;
-    baseViewers += change;
-    viewerEl.textContent = baseViewers.toLocaleString();
-  }, 2500);
-
-  // ============================
-  // FAKE PROGRESS BAR (jalan terus)
-  // ============================
-  var progressFill = document.querySelector('.fake-progress-fill');
-  var progress = 12;
-  setInterval(function(){
-    progress += Math.random() * 0.3;
-    if(progress > 95) progress = 12;
-    progressFill.style.width = progress + '%';
-  }, 2000);
+  // ============================================================
+  // EXPOSE GLOBAL FUNCS (untuk debug)
+  // ============================================================
+  window._openModal = openModal;
 
 </script>
 
